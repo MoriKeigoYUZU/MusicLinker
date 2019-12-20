@@ -1,1 +1,1 @@
-# 1_objectOrientation
+# 頑張ろう
