@@ -1,0 +1,109 @@
+{% extends "_signedin_base.html" %}
+{% block title %}Cashbook({{ mode }}){% end %}
+{% block content %}
+<div class="cashbook cashbook-form">
+    <main role="main" class="container">
+        {% if len(messages) > 0 %}
+        <div class="alert alert-info" role="alert">
+            {% for message in messages %}
+            <p class="mb-0">{{ escape(message) }}</p>
+            {% end %}
+        </div>
+        {% end %}
+        {% if len(errors) > 0 %}
+        <div class="alert alert-danger" role="alert">
+            {% for err in errors %}
+            <p class="mb-0">{{ escape(err) }}</p>
+            {% end %}
+        </div>
+        {% end %}
+        {% if mode == "new" %}
+        <form method="POST">
+            <div class="card">
+                <h5 class="card-header d-flex justify-content-between align-items-center">
+                    現金出納データ - 新規登録
+                </h5>
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="form-date">発生日付</label><!-- 発生日付は当日が初期値のため、データを表示 -->
+                            <input type="date" class="form-control" name="form-date" id="form-date" required value="{{ str(cashbook.attr['date']) if cashbook.attr['date'] is not None else '' }}">
+                        </div>
+                        <div class="form-group col-6 invisible"><!-- 対象データIDは新規登録時未発行なため非表示項目 -->
+                            <label for="form-id">対象データID</label>
+                            <input type="number" class="form-control" name="form-id" id="form-id">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-summary">摘要</label>
+                        <input type="text" class="form-control form-control-lg" name="form-summary" id="form-summary" value="{{ cashbook.attr['summary'] if cashbook.attr['summary'] is not None else '' }}">
+                        <small class="form-text text-muted">収入の場合、給料、雑収入など　支出の場合、飲食費、交通費、消耗品費など</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-detail">摘要の詳細</label>
+                        <textarea class="form-control form-control-sm" name="form-detail" id="form-detail" rows="4">{{ cashbook.attr['detail']  if cashbook.attr['detail'] is not None else ''}}</textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="form-income">収入</label>
+                            <input type="number" class="form-control" name="form-income" id="form-income" value="{{ str(cashbook.attr['income']) }}" min="0" required>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="form-expenses">支出</label>
+                            <input type="number" class="form-control" name="form-expenses" id="form-expenses" value="{{ str(cashbook.attr['expenses']) }}" min="0" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <a href="/cashbooks" class="btn btn-light" tabindex="-1">一覧へ戻る</a>
+                    <button type="submit" class="btn btn-primary">新規登録</button>
+                </div>
+            </div>
+        </form>
+        {% else %}
+        <div class="card">
+            <h5 class="card-header d-flex justify-content-between align-items-center">
+                現金出納データ - 詳細
+            </h5>
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label for="form-date">発生日付</label>
+                        <input type="date" class="form-control" name="form-date" id="form-date" required value="{{ str(cashbook.attr['date']) if cashbook.attr['date'] is not None else '' }}" readonly>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="form-id">対象データID</label>
+                        <input type="number" class="form-control" name="form-id" id="form-id" readonly value="{{ str(cashbook.attr["id"]) }}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="form-summary">摘要</label>
+                    <input type="text" class="form-control form-control-lg" name="form-summary" id="form-summary" value="{{ cashbook.attr['summary'] if cashbook.attr['summary'] is not None else '' }}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="form-detail">摘要の詳細</label>
+                    <textarea class="form-control form-control-sm" name="form-detail" id="form-detail" rows="4" readonly>{{ cashbook.attr['detail']  if cashbook.attr['detail'] is not None else ''}}</textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label for="form-income">収入</label>
+                        <input type="number" class="form-control" name="form-income" id="form-income" value="{{ str(cashbook.attr['income']) }}" min="0" readonly>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="form-expenses">支出</label>
+                        <input type="number" class="form-control" name="form-expenses" id="form-expenses" value="{{ str(cashbook.attr['expenses']) }}" min="0" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+                <a href="/cashbooks" class="btn btn-light" tabindex="-1">一覧へ戻る</a>
+                <div></div>
+            </div>
+        </div>
+        {% end %}
+    </main>
+</div>
+{% end %}

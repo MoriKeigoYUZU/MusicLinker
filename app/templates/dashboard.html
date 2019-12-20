@@ -1,0 +1,61 @@
+{% extends "_signedin_base.html" %}
+{% block title %}Dashboard{% end %}
+{% block add_scripts %}
+<!-- 日付操作系ライブラリの読み込み -->
+<script defer src="https://unpkg.com/dayjs"></script>
+<!-- グラフ描写ライブラリの読み込み -->
+<script defer src="https://cdn.jsdelivr.net/npm/chart.js@2/dist/Chart.min.js"></script>
+<script defer src="{{ static_url("js/summary-rank.js") }}"></script>
+<script defer src="{{ static_url("js/monthly-report.js") }}"></script>
+{% end %}
+{% block content %}
+<div class="dashboard container-fluid">
+    <div class="row">
+        <div class="col-sm">
+            <div class="card">
+                <h5 class="card-header">現金出納帳メニュー</h5>
+                <div class="card-body">
+                    <ul>
+                        <li><a href="/cashbooks">現金出納帳 一覧</a></li>
+                        <li><a href="/cashbook/new">現金出納帳 新規登録</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-header">摘要別収入ランキング</div>
+                <div class="card-body">
+                    <canvas id="incomeReport"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-header">摘要別支出ランキング</div>
+                <div class="card-body">
+                    <canvas id="expensesReport"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col">
+            <div class="card">
+                <div class="card-header d-flex align-items-center">
+                    <h5 class="m-0 mr-2">月別日別収支</h5>
+                    <form class="form-inline">
+                        <select class="custom-select my-1 mr-sm-2" id="form-monthly-select-ym">
+                            <!-- JavaScript により内部の optionタグを生成する -->
+                        </select>
+                    </form>
+                </div>
+                <div class="card-body">
+                    <canvas id="monthlyReport"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% end %}

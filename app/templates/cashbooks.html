@@ -1,0 +1,70 @@
+{% extends "_signedin_base.html" %}
+{% block title %}CashBooks{% end %}
+{% block content %}
+<div class="cashbooks container-fluid">
+    <div class="card">
+        <h5 class="card-header d-flex justify-content-between align-items-center">
+            現金出納帳
+            <a class="btn btn-primary" href="/cashbook/new" role="button">新規登録</a>
+        </h5>
+        <div class="card-body">
+            {% if len(messages) > 0 %}
+            <div class="alert alert-info" role="alert">
+                {% for message in messages %}
+                <p class="mb-0">{{ escape(message) }}</p>
+                {% end %}
+            </div>
+            {% end %}
+            {% if len(errors) > 0 %}
+            <div class="alert alert-danger" role="alert">
+                {% for err in errors %}
+                <p class="mb-0">{{ escape(err) }}</p>
+                {% end %}
+            </div>
+            {% end %}
+            {% if summary is not None %}
+                <div>List of summaries({{summary}})</div>
+            {% end %}
+            {% if ym is not None %}
+                <div>List of yms({{ym}})</div>
+            {% end %}
+            <table class="table table-hover">
+                <thead>
+                    <tr><th>#</th><th>日付</th><th>摘要</th><th>金額</th></tr>
+                </thead>
+                <tbody>
+                    {% for cashbook in cashbooks %}
+                    <tr data-href="/cashbook/show/{{ cashbook.attr["id"] }}">
+                        <td>{{ cashbook.attr["id"] }}</td>
+                        <td>{{ str(cashbook.attr["date"]) }}</td>
+                        <td>{{ cashbook.attr["summary"] }}</td>
+                        <td>{{ str(cashbook.attr["amount"]) }}</td>
+                    </tr>
+                    {% end %}
+                </tbody>
+            </table>
+            {% if len(cashbooks) == 0 %}
+            <div class="alert alert-info" role="alert">
+                データがありません。<a href="/cashbook/new">新規登録</a>してください。
+            </div>
+            {% end %}
+        </div>
+    </div>
+    <script>
+        // trクリック時の動作設定
+        document.querySelectorAll("tr[data-href]").forEach((elm, i) => {
+            elm.addEventListener("click", (e) => {
+                console.log(e);
+                // クリック可能な要素は、そのクリックイベントを優先する
+                if (e.target.tagName == "A" &&
+                    e.target.tagName == "INPUT" &&
+                    e.target.tagName != "BUTTON") {
+                    return;
+                }
+                // data-href属性に設定したリンクへロケーションを変える
+                window.location = elm.dataset.href;
+            });
+        });
+    </script>
+</div>
+{% end %}
