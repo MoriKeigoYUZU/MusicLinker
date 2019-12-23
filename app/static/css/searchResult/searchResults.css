@@ -1,3 +1,61 @@
+
+body {
+    font-family: "Avenir Next";
+}
+
+
+li{
+    list-style: none;
+
+}
+
+a{
+    text-decoration: none/* リンクの下線なし */
+}
+
 .header{
-    background:red;
+    background:#f7f2b4;
+    height:90px;
+}
+
+.header a{
+    color:#2f5167;
+}
+
+.header-logo{
+    font-size:36px;
+    float:left;
+    padding: 20px 40px;/* 上下20px 左右 40pxの余白 */
+    color:#2f5167;
+}
+
+.header-list li{
+    float: left;
+    padding: 33px 20px; /* 上下33px 左右 20pxの余白 */
+    color:#2f5167;
+}
+
+
+.main{
+    background:#bdf7f1;
+    height:600px;
+}
+
+.footer{
+    background-color: #2f5167;
+    color:#fff;
+    height: 120px;
+    padding:40px;
+}
+.footer-logo{
+    font-size:32px;
+    float:left;
+}
+
+.footer-list{
+    float:right;
+}
+
+.footer-list li{
+    padding-bottom:20px;
 }
