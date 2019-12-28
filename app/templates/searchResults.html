@@ -1,11 +1,44 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>検索結果</title>
-</head>
-<body>
-    <h1>test</h1>
-
-</body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../static/js/searchResults.js"></script>
+    <link
+      rel="stylesheet"
+      href="../static/css/searchResult/searchResults.css"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-logo">MusicLinker</div>
+      <div class="header-list">
+        <ul>
+          <li><a href="../templates/mypageUser.html">マイページ</a></li>
+          <li><a href="../templates/search.html">検索画面</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="main">
+      <a href="../templates/search.html">
+        <button type="button" class="backPage" name="name" value="value">
+          検索に戻る
+        </button>
+      </a>
+      <div id="formList" class="form"></div>
+    </div>
+    <div class="footer">
+      <div class="footer-logo">
+        <li>MusicLinker</li>
+      </div>
+      <div class="footer-list">
+        <ul>
+          <li>リスト1</li>
+          <li>リスト2</li>
+          <li>リスト3</li>
+        </ul>
+      </div>
+    </div>
+  </body>
 </html>
