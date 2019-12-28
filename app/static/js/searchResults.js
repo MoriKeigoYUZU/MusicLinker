@@ -1,5 +1,14 @@
 let hitNumber = 2; //検索にヒットしたアーティストの数
 
+//
+// class artistInfomation {
+//   constructor(artistName, musicality, fanBase) {
+//     this.artistName = artistName;
+//     this.musicality = artistName;
+//     this.fanBase = fanBase;
+//   }
+// }
+
 $(function() {
   //ページを読み込んだ後に実行
 
@@ -17,6 +26,7 @@ const createResult = () => {
     var name = document.createElement("h1");
     var music = document.createElement("h3");
     var fan = document.createElement("h3");
+
     // アーティスト名
     name.className = "artistName";
     name.textContent = "Name" + (i + 1);

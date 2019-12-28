@@ -39,7 +39,7 @@ a {
 }
 
 .backPage {
-  margin: 0;
+  margin: 0 auto;
 }
 
 /* jsで追加したdiv */
