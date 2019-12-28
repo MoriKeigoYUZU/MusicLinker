@@ -1,61 +1,85 @@
-
-body {
+/* body {
     font-family: "Avenir Next";
+} */
+
+li {
+  list-style: none;
 }
 
-
-li{
-    list-style: none;
-
+a {
+  text-decoration: none; /* リンクの下線なし */
 }
 
-a{
-    text-decoration: none/* リンクの下線なし */
+.header {
+  background: #77c2b9;
+  height: 90px;
 }
 
-.header{
-    background:#f7f2b4;
-    height:90px;
+.header a {
+  color: #2f5167;
 }
 
-.header a{
-    color:#2f5167;
+.header-logo {
+  font-size: 36px;
+  float: left;
+  padding: 20px 40px; /* 上下20px 左右 40pxの余白 */
+  color: #2f5167;
 }
 
-.header-logo{
-    font-size:36px;
-    float:left;
-    padding: 20px 40px;/* 上下20px 左右 40pxの余白 */
-    color:#2f5167;
+.header-list li {
+  float: left;
+  padding: 33px 20px; /* 上下33px 左右 20pxの余白 */
+  color: #2f5167;
 }
 
-.header-list li{
-    float: left;
-    padding: 33px 20px; /* 上下33px 左右 20pxの余白 */
-    color:#2f5167;
+.main {
+  background: #dce5ec;
+  height: 600px;
+  padding: 10px;
 }
 
-
-.main{
-    background:#bdf7f1;
-    height:600px;
+.backPage {
+  margin: 0;
 }
 
-.footer{
-    background-color: #2f5167;
-    color:#fff;
-    height: 120px;
-    padding:40px;
-}
-.footer-logo{
-    font-size:32px;
-    float:left;
+/* jsで追加したdiv */
+.resultFrom {
+  margin: 50px 150px;
+  background: #fde5c5;
 }
 
-.footer-list{
-    float:right;
+.favoriteButton {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #cd659f;
+  border: solid 2px #cd659f;
+  border-radius: 3px;
+  transition: 0.4s;
+  background: #fde5c5;
 }
 
-.footer-list li{
-    padding-bottom:20px;
+.resultFrom h1 {
+  color: #2f5167;
+}
+.resultFrom h3 {
+  color: #2f5167;
+}
+.footer {
+  background-color: #2f5167;
+  color: #fff;
+  height: 120px;
+  padding: 40px;
+}
+.footer-logo {
+  font-size: 32px;
+  float: left;
+}
+
+.footer-list {
+  float: right;
+}
+
+.footer-list li {
+  padding-bottom: 20px;
 }
