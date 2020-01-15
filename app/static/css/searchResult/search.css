@@ -1,7 +1,6 @@
-@charset "UTF-8";
-
 .bg-image {
-    background-image: url("../img/gahag-0112415123.jpg");
+    background-image: url("../img/透過画像.jpg");
+
     /* 画像を常に天地左右の中央に配置 */
     background-position: center center;
 
@@ -16,28 +15,6 @@
 
     /* 背景画像が読み込まれる前に表示される背景のカラー */
     background-color: #000000;
-
-}
-
-.rogo {
-    width: 100%;
-}
-
-.w-25 {
-    width: 25% !important;
-}
-
-.w-auto {
-    width: auto !important;
-}
-
-.h-50 {
-    height: 50% !important;
-}
-
-.h-75 {
-    height: 75% !important;
-}
 
 .form-white {
     padding: 0.5em 1em;
