@@ -2,9 +2,60 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>新規登録(アーティスト)</title>
 </head>
 <body>
+    <h1></h1>
+<div>
+    <div class="container"></div>
+    <form action="" method="POST" class="form-white">
+        <h1>アーティスト登録ページ</h1>
+        <a>あなたのIDを作ってください。</a><br>
+        <input type="id" name="username" id="username" ><br>
+        <a>あなたのパスワードを教えてください。</a><br>
+        <input type="password" name="password" id="password"><br>
+        <br>
+        <a>＊パスワードは〜文字以上で、英数字のみを使ってください。＊</a><br>
+        <a>アーティスト名を入力してください</a>
+        <input type="text" name="artist_name"><br>
+        <a>どんな音楽かジャンルを入力してください</a>
+        <select class="custom-select" name="genre" id="">
+            <option value="">選択しない</option>
+            <option value="pop">POP</option>
+            <option value="dance">ダンス</option>
+            <option value="animation">アニメ</option>
+            <option value="jazz">ジャズ</option>
+            <option value="reggae">レゲエ</option>
+            <option value="rbsoul">R&Bソウル</option>
+            <option value="classicalMusic">クラシック</option>
+            <option value="electronicMusic">エレクトロニック</option>
+            <option value="rock">ロック</option>
+            <option value="world">ワールド</option>
+            <option value="alternative">オルタナティブ</option>
+            <option value="popularSong">歌謡曲</option>
+            <option value="blues">ブルース</option>
+            <option value="hiphopRap">ヒップホップ＆ラップ</option>
+        </select><br/>
+        <a>ファンにどちらの性別が多いか入力してください</a>
+        <select name="custom-select" name="sex" id="sex">
+            <option value="male">男性</option>
+            <option value="female">女性</option>
+        </select><br/>
+        <a>ファンの年齢層を入力してください</a>
+        <select class="custom-select" name="age" id="">
+            <option value="">選択しない</option>
+            <option value="under_twenty">~20</option>
+            <option value="twenties">20~30</option>
+            <option value="thirties">30~40</option>
+            <option value="forties">40~50</option>
+            <option value="fifties">50~60</option>
+            <option value="over_seventy">70~</option>
+        </select><br/>
 
+        <button>新規作成</button>
+    </form>
+</div>
 </body>
 </html>
