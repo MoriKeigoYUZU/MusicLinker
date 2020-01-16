@@ -17,10 +17,10 @@
     background-color: #000000;
 }
 
-
 *, *:before, *:after {
     margin: 0;
-    padding: 0;-box;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .container {
@@ -39,7 +39,7 @@
 
 .container button {
     width: 150px;
-    height: 20px;
+    height: 40px;
 }
 
 .form-white {
@@ -49,4 +49,12 @@
     background: #ffffff;
     border-left: solid 30px #000080;
     opacity: 0.7;
+}
+
+input {
+    font-size: 1.5em;
+}
+
+.btn {
+    background: yellow;
 }
