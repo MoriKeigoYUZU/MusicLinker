@@ -1,7 +1,6 @@
 .bg-image {
     background-image: url("../../img/透過画像.jpg");
 
-
     /* 画像を常に天地左右の中央に配置 */
     background-position: center center;
 
@@ -23,7 +22,7 @@
     margin: 2em 0;
     color: #000000;
     background: #ffffff;
-    border-left: solid 30px #000080;
+    border-left: solid 30px #000000;
     opacity: 0.7;
 }
 
@@ -50,3 +49,22 @@
     width: 150px;
     height: 20px;
 }
+
+.form-white {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #000000;
+    background: #ffffff;
+    border-left: solid 30px #000080;
+    opacity: 0.7;
+}
+
+input {
+    font-size: 1.5em;
+}
+
+.btn {
+    background: yellow;
+}
+
+
