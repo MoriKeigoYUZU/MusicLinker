@@ -10,85 +10,168 @@
     <title>新規登録(アーティスト)</title>
 </head>
 <body class="bg-image">
+
+
+<nav class="navbar navbar-expand-sm navbar-dark mb-3" style="background-color:#c71585;">
+    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4"-->
+    <!--aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">-->
+    <!--<span class="navbar-toggler-icon"></span>-->
+    <!--</button>-->
+    <a class="navbar-brand" href="top.html">MusicLinker</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+        </ul>
+    </div>
+    <form class="form-inline">
+        <!--<button class="btn btn-light" type="submit" onclick="location.href='./login.html'">ログイン</button>-->
+        <div class="text-white">アーティストサインアップ</div>
+    </form>
+</nav>
+
+
 <div class="container">
     <form action="" method="" class="form-white" style="text-align: center">
-        <h1>アカウントを作成</h1>
-        <div>Eメールアドレス</div>
-        <input type="id" name="username"><br>
+        <div class="container-fluid">
 
-        <div>アーティスト名</div>
-        <input type="text" name="artist_name">
-
-
-        <div>パスワード</div>
-        <input type="password" name="password"><br>
-        <div style="font-size : 80%">パスワードの長さは最低6文字です。</div>
-
-        <p class="dropdown">
-        <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                ファン層の年齢 <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" style="text-align: center">
-                <div class="caret" name="age" id="inlineFormCustomSelect">
-                <li><a href="#">~20</a></li>
-                <li><a href="#">20~30</a></li>
-                <li><a href="#">30~40</a></li>
-                <li><a href="#">40~50</a></li>
-                <li><a href="#">50~60</a></li>
-                <li><a href="#">60~</a></li>
-                <li role="separator" class="divider"></li>
+            <div class="row">
+                <div class="col-md">
+                    <h1 class="font-weight-bold">Entry</h1>
                 </div>
-            </ul>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md">
+                    <div>アーティスト名</div>
+                    <p style=”line-height:200%;”>
+                        <input type="text" name="artist_name" placeholder="(例)UVERworld">
+                    </p>
+
+                    <div>Eメールアドレス</div>
+                    <p style=”line-height:200%;”>
+                        <input type="id" name="username" placeholder="(例)k○○○kk@aitch.ac.jp"><br>
+                    </p>
+                    <div>パスワード</div>
+                    <!--<p style=”line-height:200%;”>-->
+                        <input type="password" name="password" placeholder="(例)abc123">
+                    <!--</p>-->
+                    <div style="font-size : 70%" align="right">半角英数6文字以上　</div>
+                </div>
+                <div class="col-md">
+                    <div class="row">
+                        <div class="col-md">
+                            <div>ファン層の年齢</div>
+                            <p style=”line-height:200%;”>
+                                <select class="custom-select" name="age" id="inlineFormCustomSelect">
+                                    <option value="">選択しない</option>
+                                    <option value="under_twenty">~20</option>
+                                    <option value="twenties">20~30</option>
+                                    <option value="thirties">30~40</option>
+                                    <option value="forties">40~50</option>
+                                    <option value="fifties">50~60</option>
+                                    <option value="over_seventy">70~</option>
+                                </select>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <div>ファン層の性別</div>
+                            <p style=”line-height:200%;”>
+                                <select class="custom-select" name="sex" id="inlineFormCustomSelect">
+                                    <option value="">選択しない</option>
+                                    <option value="male">男</option>
+                                    <option value="female">女</option>
+                                </select>
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md">
+                            <div>求める音楽性</div>
+                            <select class="custom-select" name="sound" id="inlineFormCustomSelect">
+                                <option value="">選択しない</option>
+                                <option value="pop">POP</option>
+                                <option value="dance">ダンス</option>
+                                <option value="animation">アニメ</option>
+                                <option value="jazz">ジャズ</option>
+                                <option value="reggae">レゲエ</option>
+                                <option value="rbsoul">R&Bソウル</option>
+                                <option value="classicalMusic">クラシック</option>
+                                <option value="electronicMusic">エレクトロニック</option>
+                                <option value="rock">ロック</option>
+                                <option value="world">ワールド</option>
+                                <option value="alternative">オルタナティブ</option>
+                                <option value="popularSong">歌謡曲</option>
+                                <option value="blues">ブルース</option>
+                                <option value="hiphopRap">ヒップホップ＆ラップ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--<div class="col-auto my-5">-->
+                    <!--<input class="btn" type="reset" value="リセット">-->
+                    <!--<input class="btn" type="submit" value="送信">-->
+                    <!--</div>-->
+                </div>
+
+            </div>
+
         </div>
-        </p>
-
-        <p class="dropdown">
-        <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                ファン層の性別 <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" style="text-align: center">
-                <li><a href="#">男</a></li>
-                <li><a href="#">女</a></li>
-                <li role="separator" class="divider"></li>
-            </ul>
-        </div>
-        </p>
 
 
-        <p class="dropdown">
-        <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                音楽性 <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" style="text-align: center">
-                <li><a href="#"></a></li>
-                <li><a href="#">POP</a></li>
-                <li><a href="#">ダンス</a></li>
-                <li><a href="#">アニメ</a></li>
-                <li><a href="#">ジャズ</a></li>
-                <li><a href="#">レゲエ</a></li>
-                <li><a href="#">R&Bソウル</a></li>
-                <li><a href="#">クラシック</a></li>
-                <li><a href="#">エレクトロニック</a></li>
-                <li><a href="#">ロック</a></li>
-                <li><a href="#">ワールド</a></li>
-                <li><a href="#">オルタナティブ</a></li>
-                <li><a href="#">歌謡曲</a></li>
-                <li><a href="#">ブルース</a></li>
-                <li><a href="#">ヒップホップ＆ラップ</a></li>
-                <li role="separator" class="divider"></li>
-            </ul>
-        </div>
-        </p>
+        <!--<p class="dropdown">-->
+        <!--<div class="btn-group">-->
+        <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"-->
+        <!--aria-haspopup="true" aria-expanded="false">-->
+        <!--ファン層の性別 <span class="caret"></span>-->
+        <!--</button>-->
+        <!--<ul class="dropdown-menu" style="text-align: center">-->
+        <!--<li><a href="#">男</a></li>-->
+        <!--<li><a href="#">女</a></li>-->
+        <!--<li role="separator" class="divider"></li>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--</p>-->
 
 
-        <button class=" btn-info btn-lg" style="font-size : 100%">新規作成</button>
+        <!--<p class="dropdown">-->
+        <!--<div class="btn-group">-->
+        <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"-->
+        <!--aria-haspopup="true" aria-expanded="false">-->
+        <!--音楽性 <span class="caret"></span>-->
+        <!--</button>-->
+        <!--<ul class="dropdown-menu" style="text-align: center">-->
+        <!--<li><a href="#"></a></li>-->
+        <!--<li><a href="#">POP</a></li>-->
+        <!--<li><a href="#">ダンス</a></li>-->
+        <!--<li><a href="#">アニメ</a></li>-->
+        <!--<li><a href="#">ジャズ</a></li>-->
+        <!--<li><a href="#">レゲエ</a></li>-->
+        <!--<li><a href="#">R&Bソウル</a></li>-->
+        <!--<li><a href="#">クラシック</a></li>-->
+        <!--<li><a href="#">エレクトロニック</a></li>-->
+        <!--<li><a href="#">ロック</a></li>-->
+        <!--<li><a href="#">ワールド</a></li>-->
+        <!--<li><a href="#">オルタナティブ</a></li>-->
+        <!--<li><a href="#">歌謡曲</a></li>-->
+        <!--<li><a href="#">ブルース</a></li>-->
+        <!--<li><a href="#">ヒップホップ＆ラップ</a></li>-->
+        <!--<li role="separator" class="divider"></li>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--</p>-->
+
+        <br>
+        <button class="btn btn-lg " style="font-size : 100%;background-color:#c7509b;color:white;">新規作成</button>
+        <!--<button class="btn btn-info btn-lg" style="font-size : 100%">新規作成</button>-->
     </form>
+</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
