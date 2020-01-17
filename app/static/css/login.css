@@ -58,3 +58,12 @@ input {
 .btn {
     background: yellow;
 }
+
+input {
+    font-size: 1.5em;
+}
+
+::placeholder {
+    /*color: blue;*/
+    font-size: 0.8em;
+}

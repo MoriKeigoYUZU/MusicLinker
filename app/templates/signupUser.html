@@ -12,8 +12,8 @@
 <body class="bg-image">
 <nav class="navbar navbar-expand-sm navbar-dark mb-3" style="background-color:#4898A8;">
     <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4"-->
-            <!--aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">-->
-        <!--<span class="navbar-toggler-icon"></span>-->
+    <!--aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">-->
+    <!--<span class="navbar-toggler-icon"></span>-->
     <!--</button>-->
     <a class="navbar-brand" href="top.html">MusicLinker</a>
     <div class="collapse navbar-collapse">
@@ -28,16 +28,51 @@
 
 <div class="container">
     <form action="" method="" class="form-white" style="text-align: center">
-        <h2>アカウント作成</h2>
-        <div>Eメールアドレス</div>
-        <input type="id" name="username">
-        <div>パスワード</div>
-        <input type="password" name="password">
-        <div style="font-size : 80%">パスワードの長さは最低6文字です。</div>
-        <br>
-        <button class="btn btn-info btn-lg" style="font-size : 100%">新規作成</button>
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md">
+                    <h1 class="font-weight-bold">SupporterEntry</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md">
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md">
+                    <div>Eメールアドレス</div>
+                    <p style=”line-height:200%;”>
+                        <input type="id" name="username" placeholder="(例)k○○○kk@aitch.ac.jp" required>
+                    </p>
+                    <div>パスワード</div>
+                    <!--<p style=”line-height:200%;”>-->
+                    <input type="password" name="password" placeholder="(例)abc123" required>
+                    <!--</p>-->
+                    <div style="font-size : 70%" align="right">半角英数6文字以上　</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md"><p></p></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md">
+                <input class="btn btn-lg" type="reset" value="リセット"
+                       style="font-size : 100%;background-color:#4898A8;color:white;">
+                <input class="btn btn-lg button" onclick="submitfnc('top.html')" type="submit" value="送信"
+                       style="font-size : 100%;background-color:#4898A8;color:white;">
+            </div>
+        </div>
     </form>
 </div>
+
+
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
