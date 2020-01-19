@@ -15,43 +15,80 @@
 
 <body class="bg-image">
 
+
 <nav class="navbar navbar-expand-sm navbar-dark mb-3" style="background-color:#4898A8;">
-    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4"-->
-    <!--aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">-->
-    <!--<span class="navbar-toggler-icon"></span>-->
-    <!--</button>-->
     <a class="navbar-brand" href="top.html">MusicLinker</a>
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav">
         </ul>
     </div>
     <form class="form-inline">
-        <!--<button class="btn btn-light" type="submit" onclick="location.href='./login.html'">ログイン</button>-->
-        <div class="text-white">サポーターマイページ</div>
+        <div class="text-white nameArtist">
+            <span>サポーターマイページ</span>
+            <!--<span></span>-->
+            <span>(123)</span>
+        </div>
+
     </form>
 </nav>
 
 <div class="container">
     <form action="" method="" class="form-white" style="text-align: center">
-        <!--<nav class="navbar navbar-expand-sm navbar-dark bg-dark mt-3 mb-3">-->
-            <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4"-->
-                    <!--aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">-->
-                <!--<span class="navbar-toggler-icon"></span>-->
-            <!--</button>-->
-            <!--<a class="navbar-brand" href="#">MyPageSupporter</a>-->
-            <!--<div class="collapse navbar-collapse">-->
-                <!--<ul class="navbar-nav">-->
-                    <!--d-->
-                <!--</ul>-->
-            <!--</div>-->
-            <!--<h2>サポーター情報</h2>-->
-            <!--ここにgetしてきた情報を入れる-->
-        <!--</nav>-->
-        cs
+        <div class="container-fluid">
+            <div class="nameArtist">
+                <div class="row">
+                    <div class="col-md">
+                        <!--<h1>{{str(artist.attr["artist_name"])}}</h1>-->
+                        <h4><span>お気に入りのアーティスト</span></h4>
+                        <h1><span>UVERworld</span></h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col"><p></p>
+                </div>
+            </div>
+
+
+            <div class="famArtist">
+                <div class="row">
+                    <div class="col" style="">
+                        <p style="font-size : 110%;">年齢層</p>
+                        <!--<p style="font-size : 120%;">{{str(artist.attr["fan_class"])}}</p>-->
+                        <p style="font-size : 120%; line-height:100%;">20~30歳</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col"><p></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <p style="font-size : 110%;">性別</p>
+                        <!--<p style="font-size : 120%;">{{str(artist.attr["sex"])}}</p>-->
+                        <p style="font-size : 120%;">男性</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col"><p></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <p style="font-size : 110%;">求める音楽性</p>
+                        <!--<p style="font-size : 120%;">{{str(artist.attr["genre"])}}</p>-->
+                        <p style="font-size : 120%;">ロック</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
 </div>
-
-
 
 
 <!-- Optional JavaScript -->

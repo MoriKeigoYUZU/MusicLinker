@@ -24,74 +24,123 @@
 
 <body class="bg-image">
 
+
+<nav class="navbar navbar-expand-sm navbar-dark mb-3" style="background-color:#4898A8;">
+    <a class="navbar-brand" href="top.html">MusicLinker</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+        </ul>
+    </div>
+    <form class="form-inline">
+        <div class="text-white nameArtist">
+            <span>アーティスト検索</span>
+        </div>
+
+    </form>
+</nav>
+
 <div class="container">
     <form action="" method="" class="form-white" style="text-align: center">
-        <div class="form-group align-items-center">
+        <div class="container-fluid">
+            <div class="form-group align-items-center">
 
-            <div class="col-auto my-5">
-                <label>年齢</label>
-                <select class="custom-select" name="age" id="inlineFormCustomSelect">
-                    <option value="">選択しない</option>
-                    <option value="under_twenty">~20</option>
-                    <option value="twenties">20~30</option>
-                    <option value="thirties">30~40</option>
-                    <option value="forties">40~50</option>
-                    <option value="fifties">50~60</option>
-                    <option value="over_seventy">70~</option>
-                </select>
-            </div>
+                <div class="row">
+                    <div class="col"><h1>Search</h1></div>
+                </div>
 
-            <div class="col-auto my-5">
-                <label>性別</label>
-                <select class="custom-select" name="sex" id="inlineFormCustomSelect">
-                    <option value="">選択しない</option>
-                    <option value="male">男</option>
-                    <option value="female">女</option>
-                </select>
-            </div>
-            <!--
-            <div class="dropdown col-auto my-5">
-                <button class="btn btn-default dropdown-toggle" type="button" name="sex" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="true">性別
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdown_sex">
-                    <li><a href="#">選択しない</a></li>
-                    <li><a href="#">男</a></li>
-                    <li><a href="#">女</a></li>
-                </ul>
-            </div>
-            -->
+                <div class="row">
+                    <div class="col"><p></p></div>
+                </div>
 
-            <div class="col-auto my-5">
-                <label>求める音楽性</label>
-                <select class="custom-select" name="sound" id="inlineFormCustomSelect">
-                    <option value="">選択しない</option>
-                    <option value="pop">POP</option>
-                    <option value="dance">ダンス</option>
-                    <option value="animation">アニメ</option>
-                    <option value="jazz">ジャズ</option>
-                    <option value="reggae">レゲエ</option>
-                    <option value="rbsoul">R&Bソウル</option>
-                    <option value="classicalMusic">クラシック</option>
-                    <option value="electronicMusic">エレクトロニック</option>
-                    <option value="rock">ロック</option>
-                    <option value="world">ワールド</option>
-                    <option value="alternative">オルタナティブ</option>
-                    <option value="popularSong">歌謡曲</option>
-                    <option value="blues">ブルース</option>
-                    <option value="hiphopRap">ヒップホップ＆ラップ</option>
-                </select>
-            </div>
 
-            <div class="col-auto my-5">
-                <input class="btn" type="reset" value="リセット">
-                <input class="btn" type="submit" value="送信">
+                <div class="row">
+                    <div class="col-md">
+
+                        <div class="row">
+                            <div class="col-md">
+                                <div>ファン層の年齢</div>
+                                <p style=”line-height:200%;”>
+                                    <select class="custom-select" name="age" id="inlineFormCustomSelect">
+                                        <option value="">選択しない</option>
+                                        <option value="under_twenty">~20</option>
+                                        <option value="twenties">20~30</option>
+                                        <option value="thirties">30~40</option>
+                                        <option value="forties">40~50</option>
+                                        <option value="fifties">50~60</option>
+                                        <option value="over_seventy">70~</option>
+                                    </select>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md">
+                                <div>ファン層の性別</div>
+                                <p style=”line-height:200%;”>
+                                    <select class="custom-select" name="sex" id="inlineFormCustomSelect">
+                                        <option value="">選択しない</option>
+                                        <option value="male">男</option>
+                                        <option value="female">女</option>
+                                    </select>
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md">
+                                <div>音楽性</div>
+                                <select class="custom-select" name="sound" id="inlineFormCustomSelect">
+                                    <option value="">選択しない</option>
+                                    <option value="pop">POP</option>
+                                    <option value="dance">ダンス</option>
+                                    <option value="animation">アニメ</option>
+                                    <option value="jazz">ジャズ</option>
+                                    <option value="reggae">レゲエ</option>
+                                    <option value="rbsoul">R&Bソウル</option>
+                                    <option value="classicalMusic">クラシック</option>
+                                    <option value="electronicMusic">エレクトロニック</option>
+                                    <option value="rock">ロック</option>
+                                    <option value="world">ワールド</option>
+                                    <option value="alternative">オルタナティブ</option>
+                                    <option value="popularSong">歌謡曲</option>
+                                    <option value="blues">ブルース</option>
+                                    <option value="hiphopRap">ヒップホップ＆ラップ</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col"><p></p></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md">
+                        <input class="btn btn-lg" type="reset" value="リセット"
+                               style="font-size : 100%;background-color:#4898A8;color:white;">
+                        <input class="btn btn-lg button" onclick="submitfnc('top.html')" type="submit" value="送信"
+                               style="font-size : 100%;background-color:#4898A8;color:white;">
+                    </div>
+                </div>
             </div>
         </div>
-    </form>
+</div>
+</form>
 </div>
 
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 
 </body>
 
