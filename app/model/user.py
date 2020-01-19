@@ -164,6 +164,70 @@ class user:
     # サポーターとユーザーを識別
     def mode_identification(self):
         with DBConnector(dbName='db_%s' % project.name()) as con, con.cursor() as cursor:
-            if self.attr["id"] == None:
-                return self._db_save_insert()
-            return self._db_save_update()
+            if self.attr["artist_name"] == None:
+                return all([
+                    self.attr["id"] is None or type(self.attr["id"]) is int,
+                    self.attr["email"] is not None and type(
+                        self.attr["email"]) is str,
+                    self.attr["favorite"] is None or type(
+                        self.attr["favorite"]) is int,
+                    self.attr["password"] is not None and type(
+                        self.attr["password"]) is str,
+                ])
+            return all([
+                self.attr["id"] is None or type(self.attr["id"]) is int,
+                self.attr["email"] is not None and type(
+                    self.attr["email"]) is str,
+                self.attr["genre"] is None or type(self.attr["genre"]) is str,
+                self.attr["sex"] is None or type(self.attr["sex"]) is str,
+                self.attr["fan_class"] is None or type(
+                    self.attr["fan_class"]) is str,
+                self.attr["artist_name"] is None or type(
+                    self.attr["artist_name"]) is str,
+                self.attr["password"] is not None and type(
+                    self.attr["password"]) is str,
+            ])
+
+    # favorite更新
+    def favorite_update(self):
+        with DBConnector(dbName='db_%s' % project.name()) as con, con.cursor() as cursor:
+            # データの保存(UPDATE)
+            cursor.execute("""
+                UPDATE table_user
+                SET favorite = %s 
+                WHERE id = %s; """,
+                           (self.attr["favorite"],
+                            self.attr["id"]))
+
+            con.commit()
+
+        return self.attr["id"]
+
+    # search機構
+    # 展望 : できればお気に入り登録の多い順に並べたいよねっていう気持ち　''' ORDER BY '''
+    @staticmethod
+    def search_artists(genre, sex, fan_class):
+        with DBConnector(dbName='db_%s' % project.name()) as con, con.cursor() as cursor:
+
+            # sql文を条件によってtxtデータにする
+            sql_select = "SELECT * FROM table_user"
+
+            if genre is not None:
+                sql_select += " WHERE genre = '" + genre + "'"
+                if sex is not None:
+                    sql_select += " AND sex = '" + sex + "'"
+                if fan_class is not None:
+                    sql_select += " AND fan_class = '" + fan_class + "'"
+            elif sex is not None:
+                sql_select += " WHERE sex = '" + sex + "'"
+                if fan_class is not None:
+                    sql_select += " AND fan_class = '" + fan_class + "'"
+            elif fan_class is not None:
+                sql_select += " WHERE fan_class = '" + fan_class + "'"
+
+            cursor.execute(sql_select)
+            con.commit()
+            recodes = cursor.fetchall()
+
+            u_list = [user.find(recode[0]) for recode in recodes]
+            return u_list
