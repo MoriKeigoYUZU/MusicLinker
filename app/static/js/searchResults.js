@@ -1,4 +1,4 @@
-let hitNumber = 2; //検索にヒットしたアーティストの数
+let hitNumber = 6; //検索にヒットしたアーティストの数
 
 //
 // class artistInfomation {
@@ -36,6 +36,7 @@ const createResult = () => {
     //ファン増
     fan.className = "fanBase";
     fan.textContent = "ファン層";
+
 
     // p要素をdiv要素の子要素に追加
     div.appendChild(name);
