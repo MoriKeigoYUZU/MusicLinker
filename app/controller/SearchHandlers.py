@@ -1,5 +1,9 @@
 import tornado.web
 
+#
+import json
+#
+
 """以下の部分に関しては model の詳細が決まるまでなんとも言えない
 from model.user import user
 from model.cashbook import cashbook
@@ -28,7 +32,7 @@ class UserHandler(SigninBaseHandler):
         results = user.search_artists(_genre, _sex, _fan_class)
 
         self.render("searchResults.html",
-                    user=_signedInUser,
+                    user=json.dumps(_signedInUser),
                     artists=results,
                     messages=messages,
                     errors=[])
