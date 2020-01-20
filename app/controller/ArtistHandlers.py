@@ -1,4 +1,4 @@
-mport tornado.web
+import tornado.web
 import datetime
 from decimal import Decimal
 from model.artist import artist
@@ -11,7 +11,7 @@ class ArtistMyPageHandler(SigninBaseHandler):
             return
 
         #サインインアーティストの取得
-        _id = tornado.escape.xhtml(self.current_user)
+        _id = tornado.escape.xhtml_escape(self.current_user)
 
         # 他の画面からのメッセージを取得
         _message = self.get_argument("message", None)
