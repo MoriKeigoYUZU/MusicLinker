@@ -2,6 +2,25 @@
     font-family: "Avenir Next";
 } */
 
+.bg-image {
+  background-image: url("../../img/透過画像.jpg");
+
+  /* 画像を常に天地左右の中央に配置 */
+  background-position: center center;
+
+  /* 画像をタイル状に繰り返し表示しない */
+  background-repeat: no-repeat;
+
+  /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
+  background-attachment: fixed;
+
+  /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+  background-size: cover;
+
+  /* 背景画像が読み込まれる前に表示される背景のカラー */
+  background-color: #000000;
+}
+
 li {
   list-style: none;
 }
@@ -33,7 +52,7 @@ a {
 }
 
 .main {
-  background: #dce5ec;
+  /*background: #dce5ec;*/
   height: 600px;
   padding: 10px;
 }
@@ -68,8 +87,8 @@ a {
 .footer {
   background-color: #2f5167;
   color: #fff;
-  height: 120px;
-  padding: 40px;
+  height: 10px;
+  padding: 50px;
 }
 .footer-logo {
   font-size: 32px;
@@ -82,4 +101,55 @@ a {
 
 .footer-list li {
   padding-bottom: 20px;
+}
+
+.form-white {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  color: #000000;
+  background: #ffffff;
+  border-left: solid 30px #000080;
+  opacity: 0.7;
+}
+
+
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container form {
+  border: 1px solid gray;
+  border-radius: 50px;
+  padding: 100px;
+}
+
+.container button {
+  width: 150px;
+  height: 40px;
+}
+
+.form-white {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  color: #000000;
+  background: #ffffff;
+  border-left: solid 30px #000080;
+  opacity: 0.7;
+}
+
+input {
+  font-size: 1.5em;
+}
+
+.btn {
+  background: yellow;
 }
