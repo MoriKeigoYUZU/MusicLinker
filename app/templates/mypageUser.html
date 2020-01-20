@@ -25,10 +25,9 @@
     <form class="form-inline">
         <div class="text-white nameArtist">
             <span>サポーターマイページ</span>
-            <!--<span></span>-->
-            <span>(123)</span>
+            <span>{{artist.attr["id"]}}</span>
+            <!--<span>(123)</span>-->
         </div>
-
     </form>
 </nav>
 
@@ -38,9 +37,9 @@
             <div class="nameArtist">
                 <div class="row">
                     <div class="col-md">
-                        <!--<h1>{{str(artist.attr["artist_name"])}}</h1>-->
                         <h4><span>お気に入りのアーティスト</span></h4>
-                        <h1><span>UVERworld</span></h1>
+                        <!--<h1><span>UVERworld</span></h1>-->
+                        <h1><span>{{str(artist.attr["artist_name"])}}</span></h1>
                     </div>
                 </div>
             </div>
@@ -55,8 +54,8 @@
                 <div class="row">
                     <div class="col" style="">
                         <p style="font-size : 110%;">年齢層</p>
-                        <!--<p style="font-size : 120%;">{{str(artist.attr["fan_class"])}}</p>-->
-                        <p style="font-size : 120%; line-height:100%;">20~30歳</p>
+                        <p style="font-size : 120%;">{{str(artist.attr["fan_class"])}}</p>
+                        <!--<p style="font-size : 120%; line-height:100%;">20~30歳</p>-->
                     </div>
                 </div>
 
@@ -68,8 +67,8 @@
                 <div class="row">
                     <div class="col">
                         <p style="font-size : 110%;">性別</p>
-                        <!--<p style="font-size : 120%;">{{str(artist.attr["sex"])}}</p>-->
-                        <p style="font-size : 120%;">男性</p>
+                        <p style="font-size : 120%;">{{str(artist.attr["sex"])}}</p>
+                        <!--<p style="font-size : 120%;">男性</p>-->
                     </div>
                 </div>
 
@@ -81,8 +80,8 @@
                 <div class="row">
                     <div class="col">
                         <p style="font-size : 110%;">求める音楽性</p>
-                        <!--<p style="font-size : 120%;">{{str(artist.attr["genre"])}}</p>-->
-                        <p style="font-size : 120%;">ロック</p>
+                        <p style="font-size : 120%;">{{str(artist.attr["genre"])}}</p>
+                        <!--<p style="font-size : 120%;">ロック</p>-->
                     </div>
                 </div>
             </div>

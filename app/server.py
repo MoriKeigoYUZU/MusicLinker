@@ -5,7 +5,8 @@ import tornado.web
 import os
 import sys
 from model.user import user
-from controller.AuthenticationHandlers import LoginBaseHandler, LoginHandler, SignupUserHandler, SignupArtistHandler, SignoutHandler
+from controller.AuthenticationHandlers import LoginBaseHandler, LoginHandler, SignupUserHandler, SignupArtistHandler, \
+    SignoutHandler
 from controller.SearchHandlers import SearchHandler
 from controller.ArtistHandlers import ArtistHandler
 
@@ -45,8 +46,8 @@ application = tornado.web.Application([
     # favorite
     # (r"/favorite", ), <- 未定
 ],
-    template_path=os.path.join(os.getcwd(),  "templates"),
-    static_path=os.path.join(os.getcwd(),  "static"),
+    template_path=os.path.join(os.getcwd(), "templates"),
+    static_path=os.path.join(os.getcwd(), "static"),
     # cookieの暗号化キー(システムごとにランダムな文字列を設定する)
     cookie_secret="x-D-#i&0S?R6w9qEsZB8Vpxw@&t+B._$",
 )
