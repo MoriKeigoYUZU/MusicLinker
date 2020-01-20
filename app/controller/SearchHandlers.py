@@ -9,10 +9,10 @@ from model.user import user
 from model.cashbook import cashbook
 """
 from model.user import user
-from controller.AuthenticationHandlers import SigninBaseHandler
+from controller.AuthenticationHandlers import LoginBaseHandler
 
 
-class UserHandler(SigninBaseHandler):
+class SearchHandler(LoginBaseHandler):
     def get(self):
         # サインインユーザの取得
         _id = tornado.escape.xhtml_escape(self.current_user)
