@@ -5,8 +5,7 @@ import tornado.web
 import os
 import sys
 from model.user import user
-from controller.AuthenticationHandlers import LoginBaseHandler, LoginHandler, SignupUserHandler, SignupArtistHandler, \
-    SignoutHandler
+from controller.AuthenticationHandlers import LoginBaseHandler, LoginHandler, SignupUserHandler, SignupArtistHandler, SignoutHandler
 from controller.SearchHandlers import SearchHandler
 from controller.ArtistHandlers import ArtistHandler
 
