@@ -34,7 +34,7 @@
 
 .container {
     height: 90vh;
-    display: flex;
+        display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -48,13 +48,4 @@
 .container button {
     width: 150px;
     height: 20px;
-}
-
-.form-white {
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    color: #000000;
-    background: #ffffff;
-    border-left: solid 30px #000080;
-    opacity: 0.7;
 }

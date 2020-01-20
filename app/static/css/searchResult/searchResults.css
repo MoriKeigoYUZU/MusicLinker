@@ -119,12 +119,6 @@ a {
   box-sizing: border-box;
 }
 
-.container {
-  height: 90vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .container form {
   border: 1px solid gray;

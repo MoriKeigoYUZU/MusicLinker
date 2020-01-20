@@ -10,15 +10,78 @@
     <link rel="stylesheet" href="../static/css/login.css">
 </head>
 <body class="bg-image">
+<nav class="navbar navbar-expand-sm navbar-dark mb-3 bg-dark">
+    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4"-->
+    <!--aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">-->
+    <!--<span class="navbar-toggler-icon"></span>-->
+    <!--</button>-->
+    <a class="navbar-brand" href="top.html">MusicLinker</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+        </ul>
+    </div>
+    <form class="form-inline">
+        <!--<button class="btn btn-light" type="submit" onclick="location.href='./login.html'">ログイン</button>-->
+        <div class="text-white">ログイン</div>
+    </form>
+</nav>
+
+<!--<div class="container">-->
+    <!--<form action="" method="POST" class="form-white" style="text-align: center">-->
+        <!--<h1>ログイン画面</h1>-->
+        <!--<a>IDを入力してください。</a><br>-->
+        <!--<input type="id" name="username"><br>-->
+        <!--<a>パスワードを入力してください。</a><br>-->
+        <!--<input type="password" name="password">-->
+        <!--<br>-->
+        <!--<br>-->
+        <!--<button class="btn-info btn-lg" style="font-size : 100%">サインイン</button>-->
+        <!--&lt;!&ndash;&ndash;&gt;-->
+    <!--</form>-->
+<!--</div>-->
+
+
 <div class="container">
-    <form action="" method="POST" class="form-white" style="text-align: center">
-        <h1>ログイン画面</h1>
-        <a>IDを入力してください。</a><br>
-        <input type="id" name="username"><br>
-        <a>パスワードを入力してください。</a><br>
-        <input type="password" name="password"><br>
-        <button class="btn-info btn-lg" style="font-size : 100%">サインイン</button>
-        <!---->
+    <form action="" method="" class="form-white" style="text-align: center">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md">
+                    <h1 class="font-weight-bold">Login</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md">
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md">
+                    <div>Eメールアドレス</div>
+                    <p style=”line-height:200%;”>
+                        <input type="id" name="username"  required>
+                    </p>
+                    <div>パスワード</div>
+                    <!--<p style=”line-height:200%;”>-->
+                    <input type="password" name="password"  required>
+                    <!--</p>-->
+                    <!--<div style="font-size : 70%" align="right">半角英数6文字以上　</div>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md"><p></p></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md">
+                <input class="btn btn-lg button bg-dark" onclick="submitfnc('top.html')" type="submit" value="　送信　"
+                       style="font-size : 100%;color:white;">
+            </div>
+        </div>
     </form>
 </div>
 

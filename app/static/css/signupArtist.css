@@ -47,7 +47,7 @@
     color: #000000;
     background: #ffffff;
     border-left: solid 30px #000080;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 input {
@@ -56,4 +56,9 @@ input {
 
 .btn {
     background: yellow;
+}
+
+::placeholder {
+    /*color: blue;*/
+    font-size: 0.8em;
 }
