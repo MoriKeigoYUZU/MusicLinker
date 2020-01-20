@@ -7,7 +7,7 @@ import sys
 from model.user import user
 from controller.AuthenticationHandlers import LoginBaseHandler, LoginHandler, SignupUserHandler, SignupArtistHandler, SignoutHandler
 from controller.SearchHandlers import SearchHandler
-from controller.ArtistHandlers import ArtistHandler
+from controller.ArtistHandlers import ArtistMyPageHandler
 
 
 class MainHandler(LoginBaseHandler):
@@ -34,7 +34,7 @@ application = tornado.web.Application([
 
     # mypage　表示
     # (r"/mypageUser", ), <- 未定
-    (r"/mypageArtist", ArtistHandler),
+    (r"/mypageArtist", ArtistMyPageHandler),
 
     # updata
     # (r"/updateArtist", ) <- 未定
