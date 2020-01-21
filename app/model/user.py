@@ -81,6 +81,27 @@ class user:
         u.attr["password"] = data["password"]
         return u
 
+    @staticmethod
+    def find_by_email(email):
+        with DBConnector(dbName='db_%s' % project.name()) as con, \
+                con.cursor(MySQLdb.cursors.DictCursor) as cursor:
+            cursor.execute("""
+                SELECT *
+                FROM   table_user
+                WHERE  email = %s;
+            """, (email,))
+            results = cursor.fetchall()
+
+        if (len(results) == 0):
+            return None
+        data = results[0]
+        u = user()
+        u.attr["id"] = data["id"]
+        u.attr["email"] = data["email"]
+        u.attr["name"] = data["name"]
+        u.attr["password"] = data["password"]
+        return u
+
     def is_valid(self):
         return all([
             self.attr["id"] is None or type(self.attr["id"]) is int,
