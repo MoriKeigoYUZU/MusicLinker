@@ -132,18 +132,27 @@ class user:
 
         with DBConnector(dbName='db_%s' % project.name()) as con, con.cursor() as cursor:
 
+            # # データの保存(INSERT)
+            # cursor.execute("""
+            #     INSERT INTO table_user
+            #         (email, genre, sex, fan_class, artist_name, favorite, password)
+            #     VALUES
+            #         (%s, %s, %s, %s, %s, %s, %s); """,
+            #                (self.attr["email"],
+            #                 self.attr["genre"],
+            #                 self.attr["sex"],
+            #                 self.attr["fan_class"],
+            #                 self.attr["artist_name"],
+            #                 self.attr["favorite"],
+            #                 self.attr["password"]))
+
             # データの保存(INSERT)
             cursor.execute("""
                 INSERT INTO table_user
-                    (email, genre, sex, fan_class, artist_name, favorite, password)
+                    (email, password)
                 VALUES
-                    (%s, %s, %s, %s, %s, %s, %s); """,
+                    (%s, %s); """,
                            (self.attr["email"],
-                            self.attr["genre"],
-                            self.attr["sex"],
-                            self.attr["fan_class"],
-                            self.attr["artist_name"],
-                            self.attr["favorite"],
                             self.attr["password"]))
 
             cursor.execute("SELECT last_insert_id();")
