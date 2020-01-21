@@ -21,9 +21,16 @@ class UserMyPageHandler(LoginBaseHandler):
             messages.append(_message)
 
         # データ取得
-        results = user.find(int(_id))
-        self.render("mypageUser.html", user=results,
-                    messages=messages, errors=[])
+        result = user.find(int(_id))
+        favorite_id = result.attr["favorite"]
+
+        if favorite_id == None:
+            self.render("mypageUser.html", user=result,
+                        messages=messages, errors=[])
+        else:
+            favorite_artist = user.find(favorite_id)
+            self.render("mypageUser.html", user=result,
+                        favorite_artist=favorite_artist, messages=messages, errors=[])
 
 
 class ArtistMyPageHandler(LoginBaseHandler):
