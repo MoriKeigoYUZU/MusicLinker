@@ -8,7 +8,7 @@ from controller.AuthenticationHandlers import LoginBaseHandler
 class ArtistMyPageHandler(LoginBaseHandler):
     def get(self):
         if not self.current_user:
-            self.redirect("")  # ここ飛び先
+            self.redirect("/mypageArtist")  # ここ飛び先
             return
 
         # サインインアーティストの取得
@@ -27,8 +27,6 @@ class ArtistMyPageHandler(LoginBaseHandler):
 
 
 # TODO
-# signinbasehandlerを継承するかどうか(今のとこは仮置き)
-# 飛び先
 # 動作確認
 
 class CashbookCreateHandler(LoginBaseHandler):
@@ -40,7 +38,7 @@ class CashbookCreateHandler(LoginBaseHandler):
         _id = tornado.escape.xhtml_escape(self.current_user)
         _signedInUser = user.find(int(_id))
 
-        art = user.__init__()
+        art = user.find(int(_id))
         self.render("signupArtist.html", user=art,
                     mode="new", messages=[], errors=[])
 
