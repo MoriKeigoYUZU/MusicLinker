@@ -214,7 +214,7 @@ class SignupArtistHandler(LoginBaseHandler):
         u.attr["fan_class"] = _age
         u.attr["artist_name"] = _artist_name
         u.attr["password"] = _pass
-        u.save()
+        u.save_artist()
 
         # サインイン画面へリダイレクト(サインイン完了の旨を添えて)
         self.redirect("/loginArtist?message=%s" % tornado.escape.url_escape(
