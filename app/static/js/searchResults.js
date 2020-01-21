@@ -9,6 +9,14 @@ let hitNumber = 6; //検索にヒットしたアーティストの数
 //   }
 // }
 
+// ボタンをクリックで実行　お気に入り登録
+function OnButtonClick() {
+  // ログインユーザの取得
+  var userData = JSON.parse("{% raw user %}");
+  //ボタン押したら登録したいアーティストのIDをpythonに送る
+  /*-------------------------------------------------*/
+}
+
 $(function() {
   //ページを読み込んだ後に実行
 
@@ -17,7 +25,8 @@ $(function() {
 
 const createResult = () => {
   //検索結果の表示
-  for (var i = 0; i < hitNumber; i++) {
+  var artistList = JSON.parse("{% raw artists %}");
+  for (var i = 0; i < artistList.length; i++) {
     // div要素を生成
     var div = document.createElement("div");
     // div要素のclassを追加
@@ -29,14 +38,13 @@ const createResult = () => {
 
     // アーティスト名
     name.className = "artistName";
-    name.textContent = "Name" + (i + 1);
+    name.textContent = resultData.attr[i]["artist_name"];
     //音楽性
     music.className = "musicality";
-    music.textContent = "音楽性";
+    music.textContent = resultData.attr[i]["genre"];
     //ファン増
     fan.className = "fanBase";
-    fan.textContent = "ファン層";
-
+    fan.textContent = resultData.attr[i]["fan_class"];
 
     // p要素をdiv要素の子要素に追加
     div.appendChild(name);
@@ -48,6 +56,7 @@ const createResult = () => {
     favorite.className = "favoriteButton";
     favorite.textContent = "お気に入り★";
     favorite.value = i;
+    favorite.onclick = "OnButtonClick();";
     div.appendChild(favorite);
 
     // 生成したdiv要素を追加する

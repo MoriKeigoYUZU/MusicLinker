@@ -41,7 +41,7 @@ class SearchHandler(LoginBaseHandler):
 
         self.render("searchResults.html",
                     user=json.dumps(_signedInUser),
-                    artists=results,
+                    artists=json.dumps(results),
                     messages=messages,
                     errors=[])
 
