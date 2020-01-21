@@ -1,42 +1,121 @@
-
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=2.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../static/css/signupArtist.css">
     <title>新規登録(アーティスト)</title>
 </head>
+
 <body class="bg-image">
 
 
-<nav class="navbar navbar-expand-sm navbar-dark mb-3" style="background-color:#c71585;">
-    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4"-->
-    <!--aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">-->
-    <!--<span class="navbar-toggler-icon"></span>-->
-    <!--</button>-->
-    <a class="navbar-brand" onclick="location.href='./top'">MusicLinker</a>
-    <div class="collapse navbar-collapse">
-        <ul class="navbar-nav">
-        </ul>
-    </div>
-    <form class="form-inline">
-        <!--<button class="btn btn-light" type="submit" onclick="location.href='./login.html'">ログイン</button>-->
-        <div class="text-white">アーティストサインアップ</div>
-    </form>
-</nav>
+    <nav class="navbar navbar-expand-sm navbar-dark mb-3" style="background-color:#c71585;">
+        <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4"-->
+        <!--aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">-->
+        <!--<span class="navbar-toggler-icon"></span>-->
+        <!--</button>-->
+        <a class="navbar-brand" onclick="location.href='./top'">MusicLinker</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+            </ul>
+        </div>
+        <form class="form-inline">
+            <!--<button class="btn btn-light" type="submit" onclick="location.href='./login.html'">ログイン</button>-->
+            <div class="text-white">アーティストサインアップ</div>
+        </form>
+    </nav>
 
 
-<div class="container">
-    <form action="/signupUser" method="post" class="form-white" style="text-align: center">
-        <div class="container-fluid">
+    <div class="container">
+        <form action="/signupArtist" method="post" class="form-white" style="text-align: center">
+            <div class="container-fluid">
 
-            <div class="row">
-                <div class="col-md">
-                    <h1 class="font-weight-bold">ArtistEntry</h1>
+                <div class="row">
+                    <div class="col-md">
+                        <h1 class="font-weight-bold">ArtistEntry</h1>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md">
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md">
+                        <div>アーティスト名</div>
+                        <p style=”line-height:200%;”>
+                            <input type="text" name="artist_name" placeholder="(例)UVERworld" required>
+                        </p>
+
+                        <div>Eメールアドレス</div>
+                        <p style=”line-height:200%;”>
+                            <input type="email" name="email" placeholder="(例)k○○○kk@aitch.ac.jp" required>
+                        </p>
+                        <div>パスワード</div>
+                        <!--<p style=”line-height:200%;”>-->
+                        <input type="password" name="password" placeholder="(例)abc123" required>
+                        <!--</p>-->
+                        <div style="font-size : 70%" align="right">半角英数6文字以上　</div>
+                    </div>
+                    <div class="col-md">
+                        <div class="row">
+                            <div class="col-md">
+                                <div>ファン層の年齢</div>
+                                <p style=”line-height:200%;”>
+                                    <select class="custom-select" name="age" id="inlineFormCustomSelect" required>
+                                        <option value="">選択しない</option>
+                                        <option value="under_twenty">~20</option>
+                                        <option value="twenties">20~30</option>
+                                        <option value="thirties">30~40</option>
+                                        <option value="forties">40~50</option>
+                                        <option value="fifties">50~60</option>
+                                        <option value="over_seventy">70~</option>
+                                    </select>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md">
+                                <div>ファン層の性別</div>
+                                <p style=”line-height:200%;”>
+                                    <select class="custom-select" name="sex" id="inlineFormCustomSelect" required>
+                                        <option value="">選択しない</option>
+                                        <option value="male">男</option>
+                                        <option value="female">女</option>
+                                    </select>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md">
+                                <div>音楽性</div>
+                                <select class="custom-select" name="sound" id="inlineFormCustomSelect" required>
+                                    <option value="">選択しない</option>
+                                    <option value="pop">POP</option>
+                                    <option value="dance">ダンス</option>
+                                    <option value="animation">アニメ</option>
+                                    <option value="jazz">ジャズ</option>
+                                    <option value="reggae">レゲエ</option>
+                                    <option value="rbsoul">R&Bソウル</option>
+                                    <option value="classicalMusic">クラシック</option>
+                                    <option value="electronicMusic">エレクトロニック</option>
+                                    <option value="rock">ロック</option>
+                                    <option value="world">ワールド</option>
+                                    <option value="alternative">オルタナティブ</option>
+                                    <option value="popularSong">歌謡曲</option>
+                                    <option value="blues">ブルース</option>
+                                    <option value="hiphopRap">ヒップホップ＆ラップ</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -48,101 +127,24 @@
 
             <div class="row">
                 <div class="col-md">
-                    <div>アーティスト名</div>
-                    <p style=”line-height:200%;”>
-                        <input type="text" name="artist_name" placeholder="(例)UVERworld" required>
-                    </p>
-
-                    <div>Eメールアドレス</div>
-                    <p style=”line-height:200%;”>
-                        <input type="id" name="username" placeholder="(例)k○○○kk@aitch.ac.jp" required>
-                    </p>
-                    <div>パスワード</div>
-                    <!--<p style=”line-height:200%;”>-->
-                    <input type="password" name="password" placeholder="(例)abc123" required>
-                    <!--</p>-->
-                    <div style="font-size : 70%" align="right">半角英数6文字以上　</div>
-                </div>
-                <div class="col-md">
-                    <div class="row">
-                        <div class="col-md">
-                            <div>ファン層の年齢</div>
-                            <p style=”line-height:200%;”>
-                                <select class="custom-select" name="age" id="inlineFormCustomSelect" required>
-                                    <option value="">選択しない</option>
-                                    <option value="under_twenty">~20</option>
-                                    <option value="twenties">20~30</option>
-                                    <option value="thirties">30~40</option>
-                                    <option value="forties">40~50</option>
-                                    <option value="fifties">50~60</option>
-                                    <option value="over_seventy">70~</option>
-                                </select>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md">
-                            <div>ファン層の性別</div>
-                            <p style=”line-height:200%;”>
-                                <select class="custom-select" name="sex" id="inlineFormCustomSelect" required>
-                                    <option value="">選択しない</option>
-                                    <option value="male">男</option>
-                                    <option value="female">女</option>
-                                </select>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md">
-                            <div>音楽性</div>
-                            <select class="custom-select" name="sound" id="inlineFormCustomSelect" required>
-                                <option value="">選択しない</option>
-                                <option value="pop">POP</option>
-                                <option value="dance">ダンス</option>
-                                <option value="animation">アニメ</option>
-                                <option value="jazz">ジャズ</option>
-                                <option value="reggae">レゲエ</option>
-                                <option value="rbsoul">R&Bソウル</option>
-                                <option value="classicalMusic">クラシック</option>
-                                <option value="electronicMusic">エレクトロニック</option>
-                                <option value="rock">ロック</option>
-                                <option value="world">ワールド</option>
-                                <option value="alternative">オルタナティブ</option>
-                                <option value="popularSong">歌謡曲</option>
-                                <option value="blues">ブルース</option>
-                                <option value="hiphopRap">ヒップホップ＆ラップ</option>
-                            </select>
-                        </div>
-                    </div>
+                    <input class="btn btn-lg" type="reset" value="リセット"
+                        style="font-size : 100%;background-color:#c7509b;color:white;">
+                    <input class="btn btn-lg" type="submit" value="送信"
+                        style="font-size : 100%;background-color:#c7509b;color:white;">
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md">
-                <p></p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md">
-                <input class="btn btn-lg" type="reset" value="リセット"
-                       style="font-size : 100%;background-color:#c7509b;color:white;">
-                <input class="btn btn-lg" type="submit" value="送信"
-                       style="font-size : 100%;background-color:#c7509b;color:white;">
-            </div>
-        </div>
-    </form>
-</div>
-</div>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        </form>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
 </body>
+
 </html>
