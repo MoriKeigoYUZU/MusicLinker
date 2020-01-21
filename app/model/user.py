@@ -190,7 +190,43 @@ class user:
 
         return self.attr["id"]
 
+    def save_artist(self):
+        if(self.is_valid):
+            return self._db_save_artist()
+        return False
+
+    def _db_save_artist(self):
+        if self.attr["id"] == None:
+            return self._db_save_artist_insert()
+        return self._db_save_update()
+
+    def _db_save_artist_insert(self):
+
+        with DBConnector(dbName='db_%s' % project.name()) as con, con.cursor() as cursor:
+
+            # データの保存(INSERT)
+            cursor.execute("""
+                INSERT INTO table_user
+                    (email, genre, sex, fan_class, artist_name, password)
+                VALUES
+                    (%s, %s, %s, %s, %s, %s); """,
+                           (self.attr["email"],
+                            self.attr["genre"],
+                            self.attr["sex"],
+                            self.attr["fan_class"],
+                            self.attr["artist_name"],
+                            self.attr["password"]))
+
+            cursor.execute("SELECT last_insert_id();")
+            results = cursor.fetchone()
+            self.attr["id"] = results[0]
+
+            con.commit()
+
+        return self.attr["id"]
+
     # サポーターとユーザーを識別
+
     def mode_identification(self):
         with DBConnector(dbName='db_%s' % project.name()) as con, con.cursor() as cursor:
             if self.attr["artist_name"] == None:
