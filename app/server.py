@@ -5,9 +5,9 @@ import tornado.web
 import os
 import sys
 from model.user import user
-from controller.AuthenticationHandlers import LoginBaseHandler, LoginHandler, SignupUserHandler, SignupArtistHandler, SignoutHandler
-from controller.SearchHandlers import SearchHandler, FavoriteHandler, TopHandler
-from controller.ArtistHandlers import ArtistMyPageHandler
+from controller.AuthenticationHandlers import LoginBaseHandler, LoginUserHandler, LoginArtistHandler, SignupUserHandler, SignupArtistHandler, SignoutHandler
+from controller.SearchHandlers import TopHandler, SearchHandler, SearchResultsHandler
+from controller.ArtistHandlers import ArtistMyPageHandler, UserMyPageHandler
 
 
 class MainHandler(tornado.web.RequestHandler):
@@ -28,22 +28,20 @@ class MainHandler(tornado.web.RequestHandler):
 application = tornado.web.Application([
     (r"/", MainHandler),
     (r"/top", TopHandler),
-    (r"/login", LoginHandler),
+    (r"/login", LoginUserHandler),
+    (r"/loginArtist", LoginArtistHandler)
     (r"/signupUser", SignupUserHandler),
     (r"/signupArtist", SignupArtistHandler),
     (r"/signout", SignoutHandler),
 
     # mypage　表示
-    # (r"/mypageUser", ), <- 未定
+    (r"/mypageUser", UserMyPageHandler),
     (r"/mypageArtist", ArtistMyPageHandler),
 
     # search
     (r"/search", SearchHandler),
     # searchResults
-    # (r"/searchResults", SearchResultsHandler)
-
-    # favorite
-    (r"/favorite", FavoriteHandler),
+    (r"/searchResults", SearchResultsHandler),
 ],
     template_path=os.path.join(os.getcwd(), "templates"),
     static_path=os.path.join(os.getcwd(), "static"),

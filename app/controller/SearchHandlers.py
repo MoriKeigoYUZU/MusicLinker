@@ -46,7 +46,7 @@ class SearchHandler(LoginBaseHandler):
                     errors=[])
 
 
-class FavoriteHandler(LoginBaseHandler):
+class SearchResultsHandler(LoginBaseHandler):
     def get(self):
                 # サインインユーザの取得
         _id = tornado.escape.xhtml_escape(self.current_user)
@@ -59,16 +59,19 @@ class FavoriteHandler(LoginBaseHandler):
             messages.append(_message)
 
         # 概要を取得
-        _artist_id = self.get_argument("favorite", None)
+        _favorite_id = self.get_argument("favorite", None)
 
         result = _signedInUser.favorite_update()
 
-        if result == False:
-            self.render("serarchResults.html",
-                        user=_signedInUser,
-                        artists=result,
-                        messages=[],
-                        errors=["できませーん"])
+        if result is None:
+            self.redirect("/mypage")
         else:
-            self.redirect("/mypageSuport?message=%s" %
-                          tornado.escape.url_escape("お気に入り登録完了"))
+            if result == False:
+                self.render("serarchResults.html",
+                            user=_signedInUser,
+                            artists=result,
+                            messages=[],
+                            errors=["できませーん"])
+            else:
+                self.redirect("/mypageSuport?message=%s" %
+                              tornado.escape.url_escape("お気に入り登録完了"))
