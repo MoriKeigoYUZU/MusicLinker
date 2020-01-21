@@ -25,7 +25,7 @@
 
 
 <div class="container">
-    <form action="" method="" class="form-white" style="text-align: center">
+    <form action="/login" method="POST" class="form-white" style="text-align: center">
         <div class="container-fluid">
 
             <div class="row">
@@ -44,7 +44,7 @@
                 <div class="col-md">
                     <div>Eメールアドレス</div>
                     <p style=”line-height:200%;”>
-                        <input type="id" name="username" required>
+                        <input type="email" name="email" required>
                     </p>
                     <div>パスワード</div>
                     <!--<p style=”line-height:200%;”>-->
@@ -63,7 +63,7 @@
 
         <div class="row">
             <div class="col-md">
-                <input class="btn btn-lg button bg-dark" onclick="submitfnc('top.html')" type="submit" value="　送信　"
+                <input class="btn btn-lg button bg-dark" type="submit" value="　送信　"
                        style="font-size : 100%;color:white;">
             </div>
         </div>
