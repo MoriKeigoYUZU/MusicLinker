@@ -147,6 +147,10 @@ class SignupUserHandler(LoginBaseHandler):
         _email = self.get_argument("email", None)
         _raw_pass = self.get_argument("password", None)
 
+        print('hoge')
+        print(_email)
+        print(_raw_pass)
+
         # 入力項目の必須チェック
         _errors = []
         if _email == None:

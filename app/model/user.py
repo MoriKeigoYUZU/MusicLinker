@@ -98,7 +98,6 @@ class user:
         u = user()
         u.attr["id"] = data["id"]
         u.attr["email"] = data["email"]
-        u.attr["name"] = data["name"]
         u.attr["password"] = data["password"]
         return u
 
@@ -224,7 +223,7 @@ class user:
             # データの保存(UPDATE)
             cursor.execute("""
                 UPDATE table_user
-                SET favorite = %s 
+                SET favorite = %s
                 WHERE id = %s; """,
                            (self.attr["favorite"],
                             self.attr["id"]))
