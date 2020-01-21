@@ -6,11 +6,11 @@ import os
 import sys
 from model.user import user
 from controller.AuthenticationHandlers import LoginBaseHandler, LoginHandler, SignupUserHandler, SignupArtistHandler, SignoutHandler
-from controller.SearchHandlers import SearchHandler
+from controller.SearchHandlers import SearchHandler, FavoriteHandler, TopHandler
 from controller.ArtistHandlers import ArtistMyPageHandler
 
 
-class MainHandler(LoginBaseHandler):
+class MainHandler(tornado.web.RequestHandler):
     def get(self):
         if not self.current_user:
             self.redirect("/top")
@@ -27,6 +27,7 @@ class MainHandler(LoginBaseHandler):
 
 application = tornado.web.Application([
     (r"/", MainHandler),
+    (r"/top", TopHandler),
     (r"/login", LoginHandler),
     (r"/signupUser", SignupUserHandler),
     (r"/signupArtist", SignupArtistHandler),
@@ -36,14 +37,13 @@ application = tornado.web.Application([
     # (r"/mypageUser", ), <- 未定
     (r"/mypageArtist", ArtistMyPageHandler),
 
-    # updata
-    # (r"/updateArtist", ) <- 未定
-
     # search
     (r"/search", SearchHandler),
+    # searchResults
+    # (r"/searchResults", SearchResultsHandler)
 
     # favorite
-    # (r"/favorite", ), <- 未定
+    (r"/favorite", FavoriteHandler),
 ],
     template_path=os.path.join(os.getcwd(), "templates"),
     static_path=os.path.join(os.getcwd(), "static"),
