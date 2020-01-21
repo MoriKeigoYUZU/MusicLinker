@@ -2,9 +2,8 @@ import tornado.web
 import hashlib  # パスワード暗号化のためのライブラリ
 from model.user import user
 
+
 # 認証を必要とするページは、このクラスを継承する
-
-
 class LoginBaseHandler(tornado.web.RequestHandler):
     def get_current_user(self):
         return self.get_secure_cookie("user")
@@ -30,7 +29,7 @@ class SignedinPageHandler(LoginBaseHandler):
 
 
 # サインイン
-class LoginHandler(LoginBaseHandler):
+class LoginUserHandler(LoginBaseHandler):
     def get(self):
         # パラメータを取得(2つ目の引数は、取得できない場合の初期値を設定できます。)
         _message = self.get_argument("message", None)
@@ -78,6 +77,55 @@ class LoginHandler(LoginBaseHandler):
         self.redirect("/")
 
 
+# サインイン
+class LoginArtistHandler(LoginBaseHandler):
+    def get(self):
+        # パラメータを取得(2つ目の引数は、取得できない場合の初期値を設定できます。)
+        _message = self.get_argument("message", None)
+        messages = []
+        if _message is not None:
+            messages.append(_message)
+
+        # サインイン画面の表示(パラメータにメッセージが設定されていればそれを渡す)
+        self.render("loginArtist.html", errors=[], messages=messages)
+
+    def post(self):
+        # パラメータの取得
+        _email = self.get_argument("email", None)
+        _raw_pass = self.get_argument("password", None)
+
+        # エラーメッセージの初期化
+        errors = []
+
+        # 入力項目の必須チェック
+        if _email == None or _raw_pass == None:
+            if _email == None:
+                errors.append("Sign in ID(Email Address) is required.")
+            if _raw_pass == None:
+                errors.append("Password is required.")
+            self.render("loginArtist.html", errors=errors, messages=[])
+            return
+
+        # 入力されたパスワードをsha224で一方向の暗号化
+        _pass = hashlib.sha224(_raw_pass.encode()).hexdigest()
+
+        # メールアドレスでユーザー情報を取得
+        u = user.find_by_email(_email)
+
+        # 認証(ユーザーが存在する & パスワードが一致する で認証OK)
+        if u == None or _pass != u.attr["password"]:
+            # 認証失敗
+            errors.append(
+                "Sorry, your ID(Email Address) or password cannot be recognized.")
+            self.render("loginArtist.html", errors=errors, messages=[])
+            return
+
+        # DBに保管されたユーザーIDを文字列化して暗号化Cookieに格納
+        self.set_secure_cookie("user", str(u.attr["id"]))
+        # 認証が必要なページへリダイレクト
+        self.redirect("/")
+
+
 # サインアウト
 class SignoutHandler(LoginBaseHandler):
     def get(self):
@@ -88,7 +136,7 @@ class SignoutHandler(LoginBaseHandler):
                       tornado.escape.url_escape("You are now signed out."))
 
 
-# サインアップ(ユーザー登録)
+# サインアップ User
 class SignupUserHandler(LoginBaseHandler):
     def get(self):
         # サインイン画面の表示
@@ -100,13 +148,13 @@ class SignupUserHandler(LoginBaseHandler):
         _raw_pass = self.get_argument("password", None)
 
         # 入力項目の必須チェック
-        errors = []
+        _errors = []
         if _email == None:
-            errors.append("ID(Email Address) is required.")
+            _errors.append("ID(Email Address) is required.")
         if _raw_pass == None:
-            errors.append("Password is required.")
-        if len(errors) > 0:  # エラーはサインイン画面に渡す
-            self.render("signupUser.html", errors=errors, messages=[])
+            _errors.append("Password is required.")
+        if len(_errors) > 0:  # エラーはサインイン画面に渡す
+            self.render("signupUser.html", errors=_errors, messages=[])
             return
 
         # 入力されたパスワードをsha224で一方向の暗号化
@@ -122,7 +170,7 @@ class SignupUserHandler(LoginBaseHandler):
             return
 
         # ユーザー情報を保存
-        u = user.build()
+        u = user()
         u.attr["email"] = _email
         u.attr["password"] = _pass
         u.save()
@@ -131,9 +179,8 @@ class SignupUserHandler(LoginBaseHandler):
         self.redirect("/login?message=%s" % tornado.escape.url_escape(
             "Sign up is complete. Please continue to sign in."))
 
-# サインアップ(ユーザー登録)
 
-
+# サインアップ Artist
 class SignupArtistHandler(LoginBaseHandler):
     def get(self):
         # サインイン画面の表示
@@ -142,15 +189,12 @@ class SignupArtistHandler(LoginBaseHandler):
     def post(self):
         # パラメータの取得
         _email = self.get_argument("email", None)
-        _name = self.get_argument("name", None)
         _raw_pass = self.get_argument("password", None)
 
         # 入力項目の必須チェック
         errors = []
         if _email == None:
             errors.append("ID(Email Address) is required.")
-        if _name == None:
-            errors.append("Name is required.")
         if _raw_pass == None:
             errors.append("Password is required.")
         if len(errors) > 0:  # エラーはサインイン画面に渡す
@@ -170,12 +214,11 @@ class SignupArtistHandler(LoginBaseHandler):
             return
 
         # ユーザー情報を保存
-        u = user.build()
+        u = user()
         u.attr["email"] = _email
-        u.attr["name"] = _name
         u.attr["password"] = _pass
         u.save()
 
         # サインイン画面へリダイレクト(サインイン完了の旨を添えて)
-        self.redirect("/login?message=%s" % tornado.escape.url_escape(
+        self.redirect("/loginArtist?message=%s" % tornado.escape.url_escape(
             "Sign up is complete. Please continue to sign in."))

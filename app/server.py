@@ -29,7 +29,7 @@ application = tornado.web.Application([
     (r"/", MainHandler),
     (r"/top", TopHandler),
     (r"/login", LoginUserHandler),
-    (r"/loginArtist", LoginArtistHandler)
+    (r"/loginArtist", LoginArtistHandler),
     (r"/signupUser", SignupUserHandler),
     (r"/signupArtist", SignupArtistHandler),
     (r"/signout", SignoutHandler),
