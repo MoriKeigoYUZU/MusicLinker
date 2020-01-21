@@ -47,11 +47,11 @@
                 <div class="col-md">
                     <div>Eメールアドレス</div>
                     <p style=”line-height:200%;”>
-                        <input type="id" name="username" placeholder="(例)k○○○kk@aitch.ac.jp" required>
+                        <input type="id" name="username" placeholder="(例)k○○○kk@aitch.ac.jp" required autofocus>
                     </p>
                     <div>パスワード</div>
                     <!--<p style=”line-height:200%;”>-->
-                    <input type="password" name="password" placeholder="(例)abc123" required>
+                    <input type="password" name="password" placeholder="(例)abc123" required autofocus>
                     <!--</p>-->
                     <div style="font-size : 70%" align="right">半角英数6文字以上　</div>
                 </div>
@@ -64,10 +64,10 @@
 
         <div class="row">
             <div class="col-md">
-                <input class="btn btn-lg" type="reset" value="リセット"
-                       style="font-size : 100%;background-color:#4898A8;color:white;">
-                <input class="btn btn-lg button" onclick="submitfnc('top.html')" type="submit" value="送信"
-                        style="font-size : 100%;background-color:#4898A8;color:white;">
+                <button class="btn btn-lg" type="reset" value="リセット"
+                        style="font-size : 100%;background-color:#4898A8;color:white;">リセット</button>
+                <button class="btn btn-lg button" onclick="submitfnc('top.html')" type="submit" value="送信"
+                        style="font-size : 100%;background-color:#4898A8;color:white;">送信</button>
             </div>
         </div>
     </form>
