@@ -11,9 +11,6 @@ class LoginBaseHandler(tornado.web.RequestHandler):
 
 # サインイン後の画面サンプル
 class SignedinPageHandler(LoginBaseHandler):
-    # サインイン完了後のページ用サンプル(以下のimportが必須)
-    # from controller.LoginHandlers import LoginBaseHandler
-    # from model.user import user
     def get(self):
         if not self.current_user:
             self.redirect("/login")
@@ -74,7 +71,7 @@ class LoginUserHandler(LoginBaseHandler):
         # DBに保管されたユーザーIDを文字列化して暗号化Cookieに格納
         self.set_secure_cookie("user", str(u.attr["id"]))
         # 認証が必要なページへリダイレクト
-        self.redirect("/")
+        self.redirect("/mypageUser")
 
 
 # サインイン
@@ -123,7 +120,7 @@ class LoginArtistHandler(LoginBaseHandler):
         # DBに保管されたユーザーIDを文字列化して暗号化Cookieに格納
         self.set_secure_cookie("user", str(u.attr["id"]))
         # 認証が必要なページへリダイレクト
-        self.redirect("/")
+        self.redirect("/mypageArtist")
 
 
 # サインアウト
@@ -146,10 +143,6 @@ class SignupUserHandler(LoginBaseHandler):
         # パラメータの取得
         _email = self.get_argument("email", None)
         _raw_pass = self.get_argument("password", None)
-
-        print('hoge')
-        print(_email)
-        print(_raw_pass)
 
         # 入力項目の必須チェック
         _errors = []

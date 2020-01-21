@@ -1,8 +1,6 @@
 import tornado.web
 
-#
 import json
-#
 
 from model.user import user
 from controller.AuthenticationHandlers import LoginBaseHandler
@@ -10,7 +8,6 @@ from controller.AuthenticationHandlers import LoginBaseHandler
 
 class TopHandler(LoginBaseHandler):
     def get(self):
-        # パラメータを取得(2つ目の引数は、取得できない場合の初期値を設定できます。)
         _message = self.get_argument("message", None)
         messages = []
         if _message is not None:
