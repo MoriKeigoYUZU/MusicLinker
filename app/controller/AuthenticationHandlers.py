@@ -186,12 +186,24 @@ class SignupArtistHandler(LoginBaseHandler):
     def post(self):
         # パラメータの取得
         _email = self.get_argument("email", None)
+        _genre = self.get_argument("sound", None)
+        _sex = self.get_argument("sex", None)
+        _age = self.get_argument("age", None)
+        _artist_name = self.get_argument("artist_name", None)
         _raw_pass = self.get_argument("password", None)
 
         # 入力項目の必須チェック
         errors = []
         if _email == None:
             errors.append("ID(Email Address) is required.")
+        if _genre == None:
+            errors.append("Genre is required.")
+        if _sex == None:
+            errors.append("Sex is required.")
+        if _age == None:
+            errors.append("Age is required.")
+        if _artist_name == None:
+            errors.append("Artist's name is required.")
         if _raw_pass == None:
             errors.append("Password is required.")
         if len(errors) > 0:  # エラーはサインイン画面に渡す
@@ -213,6 +225,10 @@ class SignupArtistHandler(LoginBaseHandler):
         # ユーザー情報を保存
         u = user()
         u.attr["email"] = _email
+        u.attr["genre"] = _genre
+        u.attr["sex"] = _sex
+        u.attr["fan_class"] = _age
+        u.attr["artist_name"] = _artist_name
         u.attr["password"] = _pass
         u.save()
 
