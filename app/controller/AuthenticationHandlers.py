@@ -9,22 +9,6 @@ class LoginBaseHandler(tornado.web.RequestHandler):
         return self.get_secure_cookie("user")
 
 
-# サインイン後の画面サンプル
-class SignedinPageHandler(LoginBaseHandler):
-    def get(self):
-        if not self.current_user:
-            self.redirect("/login")
-            return
-        # サインインユーザーの取得
-        _id = int(tornado.escape.xhtml_escape(self.current_user))
-        _signedInUser = user.find(_id)
-
-        if _signedInUser.attr["artist_name"] == None:
-            self.render("mypageUser.html", user=_signedInUser)
-        else:
-            self.render("mypageArtist.html", user=_signedInUser)
-
-
 # サインイン
 class LoginUserHandler(LoginBaseHandler):
     def get(self):
