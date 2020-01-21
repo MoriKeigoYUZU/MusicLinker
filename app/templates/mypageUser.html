@@ -32,7 +32,64 @@
 </nav>
 
 <h1>{{user.attr["email"]}}</h1>
-<!-- -->
+
+<div class="container">
+    <form action="" method="" class="form-white" style="text-align: center">
+        <div class="container-fluid">
+            <div class="nameArtist">
+                <div class="row">
+                    <div class="col-md">
+                        <h4><span>お気に入りのアーティスト</span></h4>
+                        <!--<h1><span>UVERworld</span></h1>-->
+                        <h1><span>{{str(artist.attr["artist_name"])}}</span></h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col"><p></p>
+                </div>
+            </div>
+
+
+            <div class="famArtist">
+                <div class="row">
+                    <div class="col" style="">
+                        <p style="font-size : 110%;">年齢層</p>
+                        <p style="font-size : 120%;">{{str(artist.attr["fan_class"])}}</p>
+                        <!--<p style="font-size : 120%; line-height:100%;">20~30歳</p>-->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col"><p></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <p style="font-size : 110%;">性別</p>
+                        <p style="font-size : 120%;">{{str(artist.attr["sex"])}}</p>
+                        <!--<p style="font-size : 120%;">男性</p>-->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col"><p></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <p style="font-size : 110%;">求める音楽性</p>
+                        <p style="font-size : 120%;">{{str(artist.attr["genre"])}}</p>
+                        <!--<p style="font-size : 120%;">ロック</p>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 
 
 <!-- Optional JavaScript -->
