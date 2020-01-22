@@ -19,6 +19,15 @@ class TopHandler(LoginBaseHandler):
 
 class SearchHandler(LoginBaseHandler):
     def get(self):
+        _message = self.get_argument("message", None)
+        messages = []
+        if _message is not None:
+            messages.append(_message)
+
+        # サインイン画面の表示(パラメータにメッセージが設定されていればそれを渡す)
+        self.render("search.html", errors=[], messages=messages)
+
+    def post(self):
         # サインインユーザの取得
         _id = tornado.escape.xhtml_escape(self.current_user)
         _signedInUser = user.find(int(_id))
@@ -45,7 +54,7 @@ class SearchHandler(LoginBaseHandler):
 
 class SearchResultsHandler(LoginBaseHandler):
     def get(self):
-                # サインインユーザの取得
+        # サインインユーザの取得
         _id = tornado.escape.xhtml_escape(self.current_user)
         _signedInUser = user.find(int(_id))
 
