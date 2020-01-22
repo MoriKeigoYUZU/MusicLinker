@@ -23,23 +23,26 @@ class UserMyPageHandler(LoginBaseHandler):
         # データ取得
         result = user.find(int(_id))
         favorite_id = result.attr["favorite"]
-        favorite_artist = user.find(favorite_id)
-        # favorite_fan_class = result.attr["fan_class"]
-        # favorite_genre = result.attr["genre"]
-        # favorite_sex = result.attr["sex"]
+        favorite_fan_class = result.attr["fan_class"]
+        favorite_sex = result.attr["sex"]
+        favorite_genre = result.attr["genre"]
 
         if favorite_id == 0:
-            # print("hoge111111111111111")
-            # self.render("mypageUser.html", user=result, favorite_artist_name='未登録',
-            #             messages=messages, errors=[])
-            self.render("mypageUser.html", user=result, favorite_artist=favorite_artist,
+            print("hoge111111111111111")
+            self.render("mypageUser.html", user=result,
+                        favorite_artist_name='未登録',
+                        favorite_fan_class='未登録',
+                        favorite_sex='未登録',
+                        favorite_genre='未登録',
                         messages=messages, errors=[])
         else:
-            # print("hoge22222222222222")
+            print("hoge22222222222222")
             favorite_artist = user.find(favorite_id)
-            # self.render("mypageUser.html", user=result,
-            #             favorite_artist_name=favorite_artist.attr["artist_name"], messages=messages, errors=[])
-            self.render("mypageUser.html", user=result, favorite_artist=favorite_artist,
+            self.render("mypageUser.html", user=result,
+                        favorite_artist_name=favorite_artist.attr["artist_name"],
+                        favorite_fan_class=favorite_fan_class,
+                        favorite_sex=favorite_sex,
+                        favorite_genre=favorite_genre,
                         messages=messages, errors=[])
 
 
