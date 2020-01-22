@@ -140,7 +140,7 @@ class ArtistMyPageHandler(LoginBaseHandler):
         elif sex == "female":
             _sex = '女'
 
-        if _gnre == "":
+        if genre == "":
             _genre = '選択していない'
         elif genre == "pop":
             _genre = 'POP'

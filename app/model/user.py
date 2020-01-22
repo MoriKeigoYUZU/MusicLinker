@@ -282,13 +282,13 @@ class user:
             return u_list
 
     # アーティスト全件取得
-
-    def artist_all(self):
+    @staticmethod
+    def artist_all():
         with DBConnector(dbName='db_%s' % project.name()) as con, con.cursor() as cursor:
 
             cursor.execute("""
                 SELECT * FROM table_user 
-                WHERE artist_name IS NOT NULL
+                WHERE artist_name != ''
             """)
             con.commit()
             recodes = cursor.fetchall()
