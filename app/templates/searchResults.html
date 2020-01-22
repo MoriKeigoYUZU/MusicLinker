@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -36,33 +34,33 @@
 </nav>
 
 
-
-<div class="card-body">
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>日付</th>
-            <th>摘要</th>
-            <th>金額</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for artist in artists %}
-        <tr>
-            <td>{{ artist.attr["artist_name"] }}</td>
-        </tr>
-        {% end %}
-        </tbody>
-    </table>
-
-
-</div>
-
-
-<div class="card-body">
-
-
+<div class="container">
+    <form action="/login" method="POST" class="form-white" style="text-align: center">
+        <div class="container-fluid">
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>アーティスト名</th>
+                        <th>ファン層の年齢</th>
+                        <th>ファン層の性別</th>
+                        <th>音楽性</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for artist in artists %}
+                    <tr>
+                        <td>{{ artist.attr["artist_name"] }}</td>
+                        <td>{{ artist.attr["fan_class"] }}</td>
+                        <td>{{ artist.attr["sex"] }}</td>
+                        <td>{{ artist.attr["genre"] }}</td>
+                    </tr>
+                    {% end %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
 </div>
 
 <script
