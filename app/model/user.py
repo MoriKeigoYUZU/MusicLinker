@@ -24,7 +24,6 @@ class user:
 
     @staticmethod
     def migrate():
-
         # データベースへの接続とカーソルの生成
         with DBConnector(dbName=None) as con, con.cursor() as cursor:
             # データベース生成
@@ -131,21 +130,6 @@ class user:
 
         with DBConnector(dbName='db_%s' % project.name()) as con, con.cursor() as cursor:
 
-            # # データの保存(INSERT)
-            # cursor.execute("""
-            #     INSERT INTO table_user
-            #         (email, genre, sex, fan_class, artist_name, favorite, password)
-            #     VALUES
-            #         (%s, %s, %s, %s, %s, %s, %s); """,
-            #                (self.attr["email"],
-            #                 self.attr["genre"],
-            #                 self.attr["sex"],
-            #                 self.attr["fan_class"],
-            #                 self.attr["artist_name"],
-            #                 self.attr["favorite"],
-            #                 self.attr["password"]))
-
-            # データの保存(INSERT)
             cursor.execute("""
                 INSERT INTO table_user
                     (email, password)
@@ -277,20 +261,35 @@ class user:
             # sql文を条件によってtxtデータにする
             sql_select = "SELECT * FROM table_user"
 
-            if genre is not None:
+            if len(genre):
                 sql_select += " WHERE genre = '" + genre + "'"
-                if sex is not None:
+                if len(sex):
                     sql_select += " AND sex = '" + sex + "'"
-                if fan_class is not None:
+                if len(fan_class):
                     sql_select += " AND fan_class = '" + fan_class + "'"
-            elif sex is not None:
+            elif len(sex):
                 sql_select += " WHERE sex = '" + sex + "'"
-                if fan_class is not None:
+                if len(fan_class):
                     sql_select += " AND fan_class = '" + fan_class + "'"
-            elif fan_class is not None:
+            elif len(fan_class):
                 sql_select += " WHERE fan_class = '" + fan_class + "'"
 
             cursor.execute(sql_select)
+            con.commit()
+            recodes = cursor.fetchall()
+
+            u_list = [user.find(recode[0]) for recode in recodes]
+            return u_list
+
+    # アーティスト全件取得
+
+    def artist_all(self):
+        with DBConnector(dbName='db_%s' % project.name()) as con, con.cursor() as cursor:
+
+            cursor.execute("""
+                SELECT * FROM table_user 
+                WHERE artist_name IS NOT NULL
+            """)
             con.commit()
             recodes = cursor.fetchall()
 

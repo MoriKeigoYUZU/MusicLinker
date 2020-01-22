@@ -299,6 +299,97 @@ class test_user(unittest.TestCase):
         self.assertTrue(type(artist_list_all[6]) is user)
         self.assertTrue(type(artist_list_all[7]) is user)
 
+    def test_artist_all(self):
+
+        user.migrate()
+
+        # 全一致のデータ
+        u1 = user()
+        u1.attr["email"] = "rock@artist.com"
+        u1.attr["genre"] = "rock"
+        u1.attr["sex"] = "female"
+        u1.attr["fan_class"] = "twenties"
+        u1.attr["artist_name"] = "爆弾ジョニー"
+        u1.attr["favorite"] = None
+        u1.attr["password"] = "1234abc"
+        artist_1 = u1.save()
+        # genre, sex 一致のデータ
+        u2 = user()
+        u2.attr["email"] = "ushi@miwa.com"
+        u2.attr["genre"] = "rock"
+        u2.attr["sex"] = "female"
+        u2.attr["fan_class"] = "thirties"
+        u2.attr["artist_name"] = "ONIGAWARA"
+        u2.attr["favorite"] = None
+        u2.attr["password"] = "hijiri_san"
+        artist_2 = u2.save()
+        # sex, fan_class 一致のデータ
+        u3 = user()
+        u3.attr["email"] = "nannimo@nai.com"
+        u3.attr["genre"] = "alternative"
+        u3.attr["sex"] = "female"
+        u3.attr["fan_class"] = "twenties"
+        u3.attr["artist_name"] = "SAMURAIMANZGROOVE"
+        u3.attr["password"] = "tadahitori"
+        artist_3 = u3.save()
+        # genre, fan_class 一致のデータ
+        u4 = user()
+        u4.attr["email"] = "loveme@fender.com"
+        u4.attr["genre"] = "rock"
+        u4.attr["sex"] = "male"
+        u4.attr["fan_class"] = "twenties"
+        u4.attr["artist_name"] = "ビレッジマンズストア"
+        u4.attr["password"] = "tadasiiyoake"
+        artist_4 = u4.save()
+        # genre 一致のデータ
+        u5 = user()
+        u5.attr["email"] = "iwanna@bea.com"
+        u5.attr["genre"] = "rock"
+        u5.attr["sex"] = "male"
+        u5.attr["fan_class"] = "thirties"
+        u5.attr["artist_name"] = "みそっかす"
+        u5.attr["password"] = "yorunobakemono"
+        artist_5 = u5.save()
+        # sex 一致のデータ
+        u6 = user()
+        u6.attr["email"] = "little@cloud.com"
+        u6.attr["genre"] = "alternative"
+        u6.attr["sex"] = "female"
+        u6.attr["fan_class"] = "forties"
+        u6.attr["artist_name"] = "SOPHIA"
+        u6.attr["password"] = "kuroitongari"
+        artist_6 = u6.save()
+        # fan_class 一致のデータ
+        u7 = user()
+        u7.attr["email"] = "cool@des.com"
+        u7.attr["genre"] = "alternative"
+        u7.attr["sex"] = "male"
+        u7.attr["fan_class"] = "twenties"
+        u7.attr["artist_name"] = "バックドロップシンデレラ"
+        u7.attr["password"] = "zyakuson"
+        artist_7 = u7.save()
+        # 一個も一致しないデータ
+        u8 = user()
+        u8.attr["email"] = "kyoukan@dekinai.com"
+        u8.attr["genre"] = "alternative"
+        u8.attr["sex"] = "male"
+        u8.attr["fan_class"] = "thirties"
+        u8.attr["artist_name"] = "八十八ヶ所巡礼"
+        u8.attr["password"] = "jovejove"
+        artist_8 = u8.save()
+        # ユーザーのデータ
+        u9 = user()
+        u9.attr["email"] = "mori@keigo.com"
+        u9.attr["password"] = "morimori"
+        suporter_1 = u9.save()
+        u10 = user()
+        u10.attr["email"] = "ushi@yama.com"
+        u10.attr["password"] = "ushiushi"
+        suporter_2 = u10.save()
+
+        artist_all = user.artist_all()
+        assertEqual(len(artist_all), 8)
+
 
 if __name__ == '__main__':
     # unittestを実行
