@@ -41,6 +41,8 @@
                         <div class="col-md">
                             <h4><span>お気に入りのアーティスト</span></h4>
                             <h1><span>{{str(favorite_artist_name)}}</span></h1>
+                            <h1><span>{{str(favorite_artist_name)}}</span></h1>
+                            {{str(artist.attr["genre"])}}
                         </div>
                     </div>
                 </div>
@@ -57,6 +59,8 @@
                         <div class="col" style="">
                             <p style="font-size : 110%;">年齢層</p>
                             <!--<p style="font-size : 120%; line-height:100%;">20~30歳</p>-->
+                            <p style="font-size : 120%;">{{str(favorite_fan_class)}}</p>
+                            <p style="font-size : 120%;">{{str(favorite_fan_class)}}</p>
                         </div>
                     </div>
 
@@ -69,6 +73,8 @@
                     <div class="row">
                         <div class="col">
                             <p style="font-size : 110%;">性別</p>
+                            <p style="font-size : 120%;">{{str(favorite_sex)}}</p>
+                            <p style="font-size : 120%;">{{str(favorite_sex)}}</p>
                             <!--<p style="font-size : 120%;">男性</p>-->
                         </div>
                     </div>
@@ -82,6 +88,8 @@
                     <div class="row">
                         <div class="col">
                             <p style="font-size : 110%;">求める音楽性</p>
+                            <p style="font-size : 120%;">{{str(favorite_genre)}}</p>
+                            <p style="font-size : 120%;">{{str(favorite_genre)}}</p>
                             <!--<p style="font-size : 120%;">ロック</p>-->
                         </div>
                     </div>
