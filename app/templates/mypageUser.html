@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>MyPageSupporter</title>
     <!--css-->
     <script src="../static/js/top.js"></script>
@@ -17,30 +17,45 @@
 <body class="bg-image">
 
 
-    <nav class="navbar navbar-expand-sm navbar-dark mb-3" style="background-color:#4898A8;">
-        <a class="navbar-brand" onclick="location.href='./top'">MusicLinker</a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav">
-            </ul>
+<nav class="navbar navbar-expand-sm navbar-dark mb-3" style="background-color:#4898A8;">
+    <a class="navbar-brand" onclick="location.href='./top'">MusicLinker</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+        </ul>
+    </div>
+    <form class="form-inline">
+        <div class="text-white nameArtist">
+            <span>サポーターマイページ</span>
+            <span>{{user.attr["email"]}}</span>
         </div>
-        <form class="form-inline">
-            <div class="text-white nameArtist">
-                <span>サポーターマイページ</span>
-                <span>{{user.attr["email"]}}</span>
+    </form>
+</nav>
+
+
+<div class="container">
+    <form action="" method="" class="form-white" style="text-align: center">
+        <div class="container-fluid">
+            <div class="nameArtist">
+                <div class="row">
+                    <div class="col-md">
+                        <h4><span>お気に入りのアーティスト</span></h4>
+                        <h1><span>{{str(favorite_artist_name)}}</span></h1>
+                    </div>
+                </div>
             </div>
-        </form>
-    </nav>
+
+            <div class="row">
+                <div class="col">
+                    <p></p>
+                </div>
+            </div>
 
 
-    <div class="container">
-        <form action="" method="" class="form-white" style="text-align: center">
-            <div class="container-fluid">
-                <div class="nameArtist">
-                    <div class="row">
-                        <div class="col-md">
-                            <h4><span>お気に入りのアーティスト</span></h4>
-                            <h1><span>{{str(favorite_artist_name)}}</span></h1>
-                        </div>
+            <div class="famArtist">
+                <div class="row">
+                    <div class="col" style="">
+                        <p style="font-size : 110%;">年齢層</p>
+                        <p style="font-size : 120%;">{{str(favorite_fan_class)}}</p>
                     </div>
                 </div>
 
@@ -50,60 +65,55 @@
                     </div>
                 </div>
 
-
-                <div class="famArtist">
-                    <div class="row">
-                        <div class="col" style="">
-                            <p style="font-size : 110%;">年齢層</p>
-                            <p style="font-size : 120%;">{{str(favorite_fan_class)}}</p>
-                        </div>
+                <div class="row">
+                    <div class="col">
+                        <p style="font-size : 110%;">性別</p>
+                        <p style="font-size : 120%;">{{str(favorite_sex)}}</p>
                     </div>
+                </div>
 
-                    <div class="row">
-                        <div class="col">
-                            <p></p>
-                        </div>
+                <div class="row">
+                    <div class="col">
+                        <p></p>
                     </div>
+                </div>
 
-                    <div class="row">
-                        <div class="col">
-                            <p style="font-size : 110%;">性別</p>
-                            <p style="font-size : 120%;">{{str(favorite_sex)}}</p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <p></p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <p style="font-size : 110%;">求める音楽性</p>
-                            <p style="font-size : 120%;">{{str(favorite_genre)}}</p>
-                        </div>
+                <div class="row">
+                    <div class="col">
+                        <p style="font-size : 110%;">求める音楽性</p>
+                        <p style="font-size : 120%;">{{str(favorite_genre)}}</p>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
 
-        <button type="button" class="btn btn-lg" onclick="location.href='./search'">おｋ</button>
+    </form>
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-lg button"
+                    onclick="location.href='./search'"
+                    style="font-size : 100%;background-color:#4898A8;color:white;">
+                sアーティスト検索s
+            </button>
+        </div>
     </div>
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+</div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    <!-- Bootstrap<- -->
+<!-- Bootstrap<- -->
 </body>
 
 </html>
