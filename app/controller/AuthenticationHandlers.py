@@ -74,6 +74,8 @@ class LoginArtistHandler(LoginBaseHandler):
         # パラメータの取得
         _email = self.get_argument("email", None)
         _raw_pass = self.get_argument("password", None)
+        print(_email)
+        print(_raw_pass)
 
         # エラーメッセージの初期化
         errors = []

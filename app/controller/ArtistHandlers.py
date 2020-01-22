@@ -8,7 +8,7 @@ from controller.AuthenticationHandlers import LoginBaseHandler
 class UserMyPageHandler(LoginBaseHandler):
     def get(self):
         if not self.current_user:
-            self.redirect("/mypageUser")  # ここ飛び先
+            self.redirect("/mypageUser")
             return
 
         # サインインアーティストの取得
@@ -28,7 +28,6 @@ class UserMyPageHandler(LoginBaseHandler):
         favorite_genre = result.attr["genre"]
 
         if favorite_id == 0:
-            print("hoge111111111111111")
             self.render("mypageUser.html", user=result,
                         favorite_artist_name='未登録',
                         favorite_fan_class='未登録',
@@ -36,7 +35,6 @@ class UserMyPageHandler(LoginBaseHandler):
                         favorite_genre='未登録',
                         messages=messages, errors=[])
         else:
-            print("hoge22222222222222")
             favorite_artist = user.find(favorite_id)
             self.render("mypageUser.html", user=result,
                         favorite_artist_name=favorite_artist.attr["artist_name"],
@@ -49,7 +47,7 @@ class UserMyPageHandler(LoginBaseHandler):
 class ArtistMyPageHandler(LoginBaseHandler):
     def get(self):
         if not self.current_user:
-            self.redirect("/mypageArtist")  # ここ飛び先
+            self.redirect("/mypageArtist")
             return
 
         # サインインアーティストの取得
