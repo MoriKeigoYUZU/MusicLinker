@@ -3,7 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>ArtistMyPage</title>
     <link rel="stylesheet" href="../static/css/mypageArtist.css">
@@ -11,91 +11,95 @@
 
 <body class="bg-image">
 
-<nav class="navbar navbar-expand-sm navbar-dark mb-3" style="background-color:#c71585;">
-    <a class="navbar-brand" onclick="location.href='./top'">MusicLinker</a>
-    <div class="collapse navbar-collapse">
-        <ul class="navbar-nav">
-        </ul>
-    </div>
-    <form class="form-inline">
-        <div class="text-white nameArtist">
-            <span>アーティストマイページ</span>
-            <span>{{user.attr["email"]}}</span>
-            <!--<span>(UVERworld_123)</span>-->
+    <nav class="navbar navbar-expand-sm navbar-dark mb-3" style="background-color:#c71585;">
+        <a class="navbar-brand" onclick="location.href='./top'">MusicLinker</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+            </ul>
         </div>
+        <form class="form-inline">
+            <div class="text-white nameArtist">
+                <span>アーティストマイページ</span>
+                <span>{{user.attr["email"]}}</span>
+                <!--<span>(UVERworld_123)</span>-->
+            </div>
 
-    </form>
-</nav>
+        </form>
+    </nav>
 
-<div class="container">
-    <form action="/mypageArtist" method="get" class="form-white" style="text-align: center">
-        <div class="container-fluid">
-            <div class="nameArtist">
+    <div class="container">
+        <form action="/mypageArtist" method="get" class="form-white" style="text-align: center">
+            <div class="container-fluid">
+                <div class="nameArtist">
+                    <div class="row">
+                        <div class="col-md">
+                            <h1>{{str(user.attr["artist_name"])}}</h1>
+                            <!--<h1>UVERworld</h1>-->
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row">
-                    <div class="col-md">
-                        <h1>{{str(favorite_artist.attr["artist_name"])}}</h1>
-                        <!--<h1>UVERworld</h1>-->
+                    <div class="col">
+                        <p></p>
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col"><p></p>
-                </div>
-            </div>
 
 
-            <div class="famArtist">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col">
-                            <p style="font-size : 110%;">ファン層の年齢</p>
+                <div class="famArtist">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col">
+                                <p style="font-size : 110%;">ファン層の年齢</p>
 
-                            <p style="font-size : 120%;">{{str(favorite_artist.attr["fan_class"])}}</p>
-                            <!--<p style="font-size : 120%;">20~30歳</p>-->
+                                <p style="font-size : 120%;">{{str(user.attr["fan_class"])}}</p>
+                                <!--<p style="font-size : 120%;">20~30歳</p>-->
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col"><p></p>
+                        <div class="row">
+                            <div class="col">
+                                <p></p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col">
-                            <p style="font-size : 110%;">ファン層の性別</p>
-                            <p style="font-size : 120%;">{{str(favorite_artist.attr["sex"])}}</p>
-                            <!--<p style="font-size : 120%;">女性</p>-->
+                        <div class="row">
+                            <div class="col">
+                                <p style="font-size : 110%;">ファン層の性別</p>
+                                <p style="font-size : 120%;">{{str(user.attr["sex"])}}</p>
+                                <!--<p style="font-size : 120%;">女性</p>-->
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col"><p></p>
+                        <div class="row">
+                            <div class="col">
+                                <p></p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col">
-                            <p style="font-size : 110%;">音楽性</p>
-                            <p style="font-size : 120%;">{{str(favorite_artist.attr["genre"])}}</p>
-                            <!--<p style="font-size : 120%;">ロック</p>-->
+                        <div class="row">
+                            <div class="col">
+                                <p style="font-size : 110%;">音楽性</p>
+                                <p style="font-size : 120%;">{{str(user.attr["genre"])}}</p>
+                                <!--<p style="font-size : 120%;">ロック</p>-->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
 
 </body>
+
 </html>
