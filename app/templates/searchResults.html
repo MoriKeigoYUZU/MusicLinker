@@ -35,32 +35,6 @@
     </form>
 </nav>
 
-<!--<div class="container container-fluid">-->
-<!--<form action="" method="" class="form-white" style="text-align: center">-->
-<!--<div class="container-fluid">-->
-
-<!--<div class="main">-->
-<!--<a href="../templates/search.html">-->
-<!--<button type="button" class="backPage" name="name" value="value">-->
-<!--検索に戻る-->
-<!--</button>-->
-<!--</a>-->
-<!--<div class="row">-->
-<!--<div class="col col-lg-12">-->
-
-<!--<div class="container container-fluid">-->
-<!--<form action="" method="" class="form-white" style="text-align: center">-->
-<!--<div id="formList" class="form"></div>-->
-<!--</form>-->
-<!--</div>-->
-
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--</div>-->
-<!--</form>-->
-<!--</div>-->
 
 
 <div class="card-body">
@@ -74,12 +48,12 @@
         </tr>
         </thead>
         <tbody>
-        {% for artists in artists %}
+        {% for artist in artists %}
         <tr>
-            <td>{{ artists.attr["id"] }}</td>
-            <td>{{ str(artists.attr["date"]) }}</td>
-            <td>{{ artists.attr["summary"] }}</td>
-            <td>{{ str(artists.attr["amount"]) }}</td>
+            <td>{{ artist.attr["id"] }}</td>
+            <td>{{ str(artist.attr["date"]) }}</td>
+            <td>{{ artist.attr["summary"] }}</td>
+            <td>{{ str(artist.attr["amount"]) }}</td>
         </tr>
         {% end %}
         </tbody>
