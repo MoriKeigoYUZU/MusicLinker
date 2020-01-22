@@ -37,8 +37,8 @@ class SearchHandler(LoginBaseHandler):
         results = user.search_artists(_genre, _sex, _fan_class)
 
         self.render("searchResults.html",
-                    user=json.dumps(_signedInUser),
-                    artists=json.dumps(results),
+                    user=_signedInUser,
+                    artists=results,
                     messages=messages,
                     errors=[])
 
