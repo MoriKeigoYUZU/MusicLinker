@@ -50,10 +50,7 @@
         <tbody>
         {% for artist in artists %}
         <tr>
-            <td>{{ artist.attr["id"] }}</td>
-            <td>{{ str(artist.attr["date"]) }}</td>
-            <td>{{ artist.attr["summary"] }}</td>
-            <td>{{ str(artist.attr["amount"]) }}</td>
+            <td>{{ artist.attr["artist_name"] }}</td>
         </tr>
         {% end %}
         </tbody>
