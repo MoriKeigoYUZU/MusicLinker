@@ -27,6 +27,59 @@ class UserMyPageHandler(LoginBaseHandler):
         favorite_sex = result.attr["sex"]
         favorite_genre = result.attr["genre"]
 
+        if favorite_fan_class == "":
+            _favorite_fan_class = '選択しない'
+        elif favorite_fan_class == "under_twenty":
+            _favorite_fan_class = '~20'
+        elif favorite_fan_class == "twenties":
+            _favorite_fan_class = '20~30'
+        elif favorite_fan_class == "thirties":
+            _favorite_fan_class = '30~40'
+        elif favorite_fan_class == "forties":
+            _favorite_fan_class = '40~50'
+        elif favorite_fan_class == "fifties":
+            _favorite_fan_class = '50~60'
+        elif favorite_fan_class == "over_seventy":
+            _favorite_fan_class = '70~'
+
+        if favorite_sex == "":
+            _favorite_sex = '選択しない'
+        elif favorite_sex == "male":
+            _favorite_sex = '男'
+        elif favorite_sex == "female":
+            _favorite_sex = '女'
+
+        if favorite_genre == "":
+            _favorite_genre = '選択しない'
+        elif favorite_genre == "pop":
+            _favorite_genre = 'POP'
+        elif favorite_genre == "dance":
+            _favorite_genre = 'ダンス'
+        elif favorite_genre == "animation":
+            _favorite_genre = 'アニメ'
+        elif favorite_genre == "jazz":
+            _favorite_genre = 'ジャズ'
+        elif favorite_genre == "reggae":
+            _favorite_genre = 'レゲエ'
+        elif favorite_genre == "rbsoul":
+            _favorite_genre = 'R&Bソウル'
+        elif favorite_genre == "classicalMusic":
+            _favorite_genre = 'クラシック'
+        elif favorite_genre == "electronicMusic":
+            _favorite_genre = 'エレクトロニック'
+        elif favorite_genre == "rock":
+            _favorite_genre = 'ロック'
+        elif favorite_genre == "world":
+            _favorite_genre = 'ワールド'
+        elif favorite_genre == "alternative":
+            _favorite_genre = 'オルタナティブ'
+        elif favorite_genre == "popularSong":
+            _favorite_genre = '歌謡曲'
+        elif favorite_genre == "blues":
+            _favorite_genre = 'ブルース'
+        elif favorite_genre == "hiphopRap":
+            _favorite_genre = 'ヒップホップ＆ラップ'
+
         if favorite_id == 0:
             self.render("mypageUser.html", user=result,
                         favorite_artist_name='未登録',
@@ -38,9 +91,9 @@ class UserMyPageHandler(LoginBaseHandler):
             favorite_artist = user.find(favorite_id)
             self.render("mypageUser.html", user=result,
                         favorite_artist_name=favorite_artist.attr["artist_name"],
-                        favorite_fan_class=favorite_fan_class,
-                        favorite_sex=favorite_sex,
-                        favorite_genre=favorite_genre,
+                        favorite_fan_class=_favorite_fan_class,
+                        favorite_sex=_favorite_sex,
+                        favorite_genre=_favorite_genre,
                         messages=messages, errors=[])
 
 
