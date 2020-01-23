@@ -241,11 +241,31 @@ class user:
     def favorite_update(self):
         with DBConnector(dbName='db_%s' % project.name()) as con, con.cursor() as cursor:
             # データの保存(UPDATE)
+            # cursor.execute("""
+            #     UPDATE table_user
+            #     SET favorite = %s
+            #     WHERE id = %s; """,
+            #                (self.attr["favorite"],
+            #                 self.attr["id"]))
+
+            # データの保存(UPDATE)
             cursor.execute("""
                 UPDATE table_user
-                SET favorite = %s
+                SET email = %s,
+                    genre = %s,
+                    sex = %s,
+                    fan_class = %s,
+                    artist_name = %s,
+                    favorite = %s,
+                    password = %s
                 WHERE id = %s; """,
-                           (self.attr["favorite"],
+                           (self.attr["email"],
+                            self.attr["genre"],
+                            self.attr["sex"],
+                            self.attr["fan_class"],
+                            self.attr["artist_name"],
+                            self.attr["favorite"],
+                            self.attr["password"],
                             self.attr["id"]))
 
             con.commit()
