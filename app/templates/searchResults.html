@@ -32,52 +32,51 @@
 
 
 <div class="container">
-    <form action="/login" method="POST" class="form-white" style="text-align: center">
-        <div class="container-fluid">
-            <div class="card-body">
-                <table class="table table-hover">
-                    <thead>
+    <div class="container-fluid">
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>アーティスト名</th>
+                    <th>ファン層の年齢</th>
+                    <th>ファン層の性別</th>
+                    <th>音楽性</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- {% for artist in artists %}
+        <tr>
+            <td>{{ artist.attr["artist_name"] }}</td>
+            <td>{{ artist.attr["fan_class"] }}</td>
+            <td>{{ artist.attr["sex"] }}</td>
+            <td>{{ artist.attr["genre"] }}</td>
+        </tr>
+        {% end %} -->
+
+                {% for i in range(0,len(artists)) %}
+                <form action="/searchResults" method="post">
+                    <!--<form action="/searchResults" method="post" onclick="favorite()">-->
+                    <!--<select name="horoscope" size="12">-->
                     <tr>
-                        <th></th>
-                        <th>アーティスト名</th>
-                        <th>ファン層の年齢</th>
-                        <th>ファン層の性別</th>
-                        <th>音楽性</th>
+                        <td><input type="submit" value="お気に入り登録" class="btn btn-lg button" type="submit"
+                                   style="font-size : 100%;background-color:#4898A8;color:white;">
+                            <input type="hidden" name="favorite" value="{{artists[i].attr[" id"]}}" class="btn btn-lg
+                            button">
+                        </td>
+                        <td>{{ artist_name_list[i] }}</td>
+                        <td>{{ fan_class_list[i] }}</td>
+                        <td>{{ sex_list[i] }}</td>
+                        <td>{{ genre_list[i] }}</td>
                     </tr>
-                    </thead>
-                    <tbody>
-                    <!-- {% for artist in artists %}
-            <tr>
-                <td>{{ artist.attr["artist_name"] }}</td>
-                <td>{{ artist.attr["fan_class"] }}</td>
-                <td>{{ artist.attr["sex"] }}</td>
-                <td>{{ artist.attr["genre"] }}</td>
-            </tr>
-            {% end %} -->
+                    <!--</select>-->
+                </form>
+                {% end %}
 
-                    {% for i in range(0,len(artists)) %}
-                    <form action="/searchResults" method="post">
-                        <!--<form action="/searchResults" method="post" onclick="favorite()">-->
-                        <!--<select name="horoscope" size="12">-->
-                            <tr >
-                                <td><input type="submit" value="お気に入り登録" class="btn btn-lg button" type="submit"
-                                style="font-size : 100%;background-color:#4898A8;color:white;">
-                                    <input type="hidden" name="favorite" value=artists[i].attr["id"] class="btn btn-lg button">
-                                </td>
-                                <td>{{ artist_name_list[i] }}</td>
-                                <td>{{ fan_class_list[i] }}</td>
-                                <td>{{ sex_list[i] }}</td>
-                                <td>{{ genre_list[i] }}</td>
-                            </tr>
-                        <!--</select>-->
-                    </form>
-                    {% end %}
-
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
         </div>
-    </form>
+    </div>
 </div>
 
 
