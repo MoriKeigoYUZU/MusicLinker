@@ -31,53 +31,60 @@
     </nav>
 
 
-    <div class="container">
+
+<div class="container">
+    <div class="form-white" style="text-align: center">
+
         <div class="container-fluid">
             <div class="card-body">
                 <table class="table table-hover">
                     <thead>
-                        <tr>
-                            <th></th>
-                            <th>アーティスト名</th>
-                            <th>ファン層の年齢</th>
-                            <th>ファン層の性別</th>
-                            <th>音楽性</th>
-                        </tr>
+
+                    <tr>
+                        <th></th>
+                        <th>アーティスト名</th>
+                        <th>ファン層の年齢</th>
+                        <th>ファン層の性別</th>
+                        <th>音楽性</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        <!-- {% for artist in artists %}
-        <tr>
-            <td>{{ artist.attr["artist_name"] }}</td>
-            <td>{{ artist.attr["fan_class"] }}</td>
-            <td>{{ artist.attr["sex"] }}</td>
-            <td>{{ artist.attr["genre"] }}</td>
-        </tr>
-        {% end %} -->
-
-                        {% for i in range(0,len(artists)) %}
-                        <form action="/searchResults" method="post">
-                            <!--<form action="/searchResults" method="post" onclick="favorite()">-->
-                            <!--<select name="horoscope" size="12">-->
+                    <!-- {% for artist in artists %}
+            <tr>
+                <td>{{ artist.attr["artist_name"] }}</td>
+                <td>{{ artist.attr["fan_class"] }}</td>
+                <td>{{ artist.attr["sex"] }}</td>
+                <td>{{ artist.attr["genre"] }}</td>
+            </tr>
+            {% end %} -->
+                    <form action="/searchResults" method="post">
+                    {% for i in range(0,len(artists)) %}
+                        <!--<form action="/searchResults" method="post" onclick="favorite()">-->
+                        <!--<select name="horoscope" size="12">-->
                             <tr>
                                 <td><input type="submit" value="お気に入り登録" class="btn btn-lg button" type="submit"
-                                        style="font-size : 100%;background-color:#4898A8;color:white;">
-                                    <input type="hidden" name="favorite" value="{{artists[i].attr["id"]}}" class="btn btn-lg
-                            button">
+                                style="font-size : 100%;background-color:#4898A8;color:white;">
+                                    <input type="hidden" name="favorite" value="{{ artists[i].attr["id"] }}" class="btn btn-lg button">
                                 </td>
-                                <td>{{ artist_name_list[i] }}</td>
+                                <!--<td>{{ artist_name_list[i] }}</td>-->
+                                <td>{{ artists[i].attr["id"] }}</td>
+
                                 <td>{{ fan_class_list[i] }}</td>
                                 <td>{{ sex_list[i] }}</td>
                                 <td>{{ genre_list[i] }}</td>
                             </tr>
-                            <!--</select>-->
-                        </form>
-                        {% end %}
+                        <!--</select>-->
+                    {% end %}
+                    </form>
+
 
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+</div>
+
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
