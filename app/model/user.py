@@ -205,12 +205,15 @@ class user:
     @staticmethod
     def favorite_update(_favorite_id, _id):
         with DBConnector(dbName='db_%s' % project.name()) as con, con.cursor() as cursor:
+
             # データの保存(UPDATE)
+
             cursor.execute("""
                 UPDATE table_user
                 SET favorite = %s
                 WHERE id = %s; """,
                            (_favorite_id, _id))
+
             con.commit()
         return _id
     # search機構
