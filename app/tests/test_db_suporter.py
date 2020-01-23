@@ -246,8 +246,8 @@ class test_user(unittest.TestCase):
         self.assertEqual(u8.attr["id"], 8)
 
         artist_list = user.search_artists(genre, sex, fan_class)
-        #self.assertEqual(len(artist_list), 1)
-        #self.assertTrue(type(artist_list[0]) is user)
+        self.assertEqual(len(artist_list), 1)
+        self.assertTrue(type(artist_list[0]) is user)
 
         artist_list_gs = user.search_artists(genre, sex, '')
         self.assertEqual(len(artist_list_gs), 2)
