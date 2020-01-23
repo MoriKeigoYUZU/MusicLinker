@@ -1,12 +1,8 @@
 import MySQLdb
-
 from db import DBConnector
 from model.project import project
-
-
 class user:
     """ ユーザーモデル """
-
     def __init__(self):
         self.attr = {}
         # 共通
@@ -21,7 +17,6 @@ class user:
         self.attr["favorite"] = None
         # 共通
         self.attr["password"] = None
-
     @staticmethod
     def migrate():
         # データベースへの接続とカーソルの生成
@@ -47,13 +42,11 @@ class user:
                     PRIMARY KEY (`id`)
                 ); """)
             con.commit()
-
     @staticmethod
     def db_cleaner():
         with DBConnector(dbName=None) as con, con.cursor() as cursor:
             cursor.execute('DROP DATABASE IF EXISTS db_%s;' % project.name())
             con.commit()
-
     @staticmethod
     def find(id):
         with DBConnector(dbName='db_%s' % project.name()) as con, \
@@ -64,10 +57,8 @@ class user:
                 WHERE  id = %s;
             """, (id,))
             results = cursor.fetchall()
-
         if (len(results) == 0):
             return None
-
         data = results[0]
         u = user()
         u.attr["id"] = data["id"]
@@ -79,7 +70,6 @@ class user:
         u.attr["favorite"] = data["favorite"]
         u.attr["password"] = data["password"]
         return u
-
     @staticmethod
     def find_by_email(email):
         with DBConnector(dbName='db_%s' % project.name()) as con, \
@@ -90,7 +80,6 @@ class user:
                 WHERE  email = %s;
             """, (email,))
             results = cursor.fetchall()
-
         if (len(results) == 0):
             return None
         data = results[0]
@@ -99,7 +88,6 @@ class user:
         u.attr["email"] = data["email"]
         u.attr["password"] = data["password"]
         return u
-
     def is_valid(self):
         return all([
             self.attr["id"] is None or type(self.attr["id"]) is int,
@@ -115,21 +103,16 @@ class user:
             self.attr["password"] is not None and type(
                 self.attr["password"]) is str,
         ])
-
     def save(self):
         if(self.is_valid):
             return self._db_save()
         return False
-
     def _db_save(self):
         if self.attr["id"] == None:
             return self._db_save_insert()
         return self._db_save_update()
-
     def _db_save_insert(self):
-
         with DBConnector(dbName='db_%s' % project.name()) as con, con.cursor() as cursor:
-
             cursor.execute("""
                 INSERT INTO table_user
                     (email, password)
@@ -137,19 +120,13 @@ class user:
                     (%s, %s); """,
                            (self.attr["email"],
                             self.attr["password"]))
-
             cursor.execute("SELECT last_insert_id();")
             results = cursor.fetchone()
             self.attr["id"] = results[0]
-
             con.commit()
-
         return self.attr["id"]
-
     def _db_save_update(self):
-
         with DBConnector(dbName='db_%s' % project.name()) as con, con.cursor() as cursor:
-
             # データの保存(UPDATE)
             cursor.execute("""
                 UPDATE table_user
@@ -169,25 +146,18 @@ class user:
                             self.attr["favorite"],
                             self.attr["password"],
                             self.attr["id"]))
-
             con.commit()
-
         return self.attr["id"]
-
     def save_artist(self):
         if(self.is_valid):
             return self._db_save_artist()
         return False
-
     def _db_save_artist(self):
         if self.attr["id"] == None:
             return self._db_save_artist_insert()
         return self._db_save_update()
-
     def _db_save_artist_insert(self):
-
         with DBConnector(dbName='db_%s' % project.name()) as con, con.cursor() as cursor:
-
             # データの保存(INSERT)
             cursor.execute("""
                 INSERT INTO table_user
@@ -200,17 +170,12 @@ class user:
                             self.attr["fan_class"],
                             self.attr["artist_name"],
                             self.attr["password"]))
-
             cursor.execute("SELECT last_insert_id();")
             results = cursor.fetchone()
             self.attr["id"] = results[0]
-
             con.commit()
-
         return self.attr["id"]
-
     # サポーターとユーザーを識別
-
     def mode_identification(self):
         with DBConnector(dbName='db_%s' % project.name()) as con, con.cursor() as cursor:
             if self.attr["artist_name"] == None:
@@ -236,51 +201,25 @@ class user:
                 self.attr["password"] is not None and type(
                     self.attr["password"]) is str,
             ])
-
     # favorite更新
-    def favorite_update(self):
+    @staticmethod
+    def favorite_update(_favorite_id, _id):
         with DBConnector(dbName='db_%s' % project.name()) as con, con.cursor() as cursor:
-            # データの保存(UPDATE)
-            # cursor.execute("""
-            #     UPDATE table_user
-            #     SET favorite = %s
-            #     WHERE id = %s; """,
-            #                (self.attr["favorite"],
-            #                 self.attr["id"]))
-
             # データの保存(UPDATE)
             cursor.execute("""
                 UPDATE table_user
-                SET email = %s,
-                    genre = %s,
-                    sex = %s,
-                    fan_class = %s,
-                    artist_name = %s,
-                    favorite = %s,
-                    password = %s
+                SET favorite = %s
                 WHERE id = %s; """,
-                           (self.attr["email"],
-                            self.attr["genre"],
-                            self.attr["sex"],
-                            self.attr["fan_class"],
-                            self.attr["artist_name"],
-                            self.attr["favorite"],
-                            self.attr["password"],
-                            self.attr["id"]))
-
+                           (_favorite_id, _id))
             con.commit()
-
-        return self.attr["id"]
-
+        return _id
     # search機構
     # 展望 : できればお気に入り登録の多い順に並べたいよねっていう気持ち　''' ORDER BY '''
     @staticmethod
     def search_artists(genre, sex, fan_class):
         with DBConnector(dbName='db_%s' % project.name()) as con, con.cursor() as cursor:
-
             # sql文を条件によってtxtデータにする
             sql_select = "SELECT * FROM table_user"
-
             if len(genre):
                 sql_select += " WHERE genre = '" + genre + "'"
                 if len(sex):
@@ -293,25 +232,20 @@ class user:
                     sql_select += " AND fan_class = '" + fan_class + "'"
             elif len(fan_class):
                 sql_select += " WHERE fan_class = '" + fan_class + "'"
-
             cursor.execute(sql_select)
             con.commit()
             recodes = cursor.fetchall()
-
             u_list = [user.find(recode[0]) for recode in recodes]
             return u_list
-
     # アーティスト全件取得
     @staticmethod
     def artist_all():
         with DBConnector(dbName='db_%s' % project.name()) as con, con.cursor() as cursor:
-
             cursor.execute("""
-                SELECT * FROM table_user 
+                SELECT * FROM table_user
                 WHERE artist_name != ''
             """)
             con.commit()
             recodes = cursor.fetchall()
-
             u_list = [user.find(recode[0]) for recode in recodes]
             return u_list

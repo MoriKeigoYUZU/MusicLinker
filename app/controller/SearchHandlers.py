@@ -1,61 +1,46 @@
 import tornado.web
-
 import json
-
 from model.user import user
 from controller.AuthenticationHandlers import LoginBaseHandler
-
-
 class TopHandler(LoginBaseHandler):
     def get(self):
         _message = self.get_argument("message", None)
         messages = []
         if _message is not None:
             messages.append(_message)
-
         # サインイン画面の表示(パラメータにメッセージが設定されていればそれを渡す)
         self.render("top.html", errors=[], messages=messages)
-
-
 class SearchHandler(LoginBaseHandler):
     def get(self):
         _message = self.get_argument("message", None)
         messages = []
         if _message is not None:
             messages.append(_message)
-
         # サインイン画面の表示(パラメータにメッセージが設定されていればそれを渡す)
         self.render("search.html", errors=[], messages=messages)
-
     def post(self):
         # サインインユーザの取得
         _id = tornado.escape.xhtml_escape(self.current_user)
         _signedInUser = user.find(int(_id))
-
         # 他の画面からのメッセージを取得
         _message = self.get_argument("message", None)
         messages = []
         if _message is not None:
             messages.append(_message)
-
         # 概要を取得
         _genre = self.get_argument("sound", None)
         _sex = self.get_argument("sex", None)
         _fan_class = self.get_argument("age", None)
-
         if len(_genre) | len(_sex) | len(_fan_class):
             results = user.search_artists(_genre, _sex, _fan_class)
         else:
             results = user.artist_all()
-
         artist_name_list = []
         genre_list = []
         sex_list = []
         fan_class_list = []
-
         for result in results:
             artist_name_list.append(result.attr["artist_name"])
-
             if result.attr["fan_class"] == "under_twenty":
                 fan_class_list.append('~20')
             elif result.attr["fan_class"] == "twenties":
@@ -68,12 +53,10 @@ class SearchHandler(LoginBaseHandler):
                 fan_class_list.append('50~60')
             elif result.attr["fan_class"] == "over_seventy":
                 fan_class_list.append('70~')
-
             if result.attr["sex"] == "male":
                 sex_list.append('男')
             elif result.attr["sex"] == "female":
                 sex_list.append('女')
-
             if result.attr["genre"] == "pop":
                 genre_list.append('POP')
             elif result.attr["genre"] == "dance":
@@ -102,13 +85,11 @@ class SearchHandler(LoginBaseHandler):
                 genre_list.append('ブルース')
             elif result.attr["genre"] == "hiphopRap":
                 genre_list.append('ヒップホップ＆ラップ')
-
         print(type(results))
         print(len(results))
         print(_genre)
         print(_sex)
         print(_fan_class)
-
         self.render("searchResults.html",
                     user=_signedInUser,
                     artists=results,
@@ -118,34 +99,26 @@ class SearchHandler(LoginBaseHandler):
                     genre_list=genre_list,
                     messages=messages,
                     errors=[])
-
-
 class SearchResultsHandler(LoginBaseHandler):
     def get(self):
         _message = self.get_argument("message", None)
         messages = []
         if _message is not None:
             messages.append(_message)
-
         # サインイン画面の表示(パラメータにメッセージが設定されていればそれを渡す)
         self.render("searchResults.html", errors=[], messages=messages)
-
     def post(self):
         # サインインユーザの取得
         _id = tornado.escape.xhtml_escape(self.current_user)
         _signedInUser = user.find(int(_id))
-
         # 他の画面からのメッセージを取得
         _message = self.get_argument("message", None)
         messages = []
         if _message is not None:
             messages.append(_message)
-
         # 概要を取得
         _favorite_id = self.get_argument("favorite", None)
-
-        result = _signedInUser.favorite_update()
-
+        result = _signedInUser.favorite_update(_favorite_id, _id)
         if result is None:
             self.redirect("/mypageUser")
         else:
