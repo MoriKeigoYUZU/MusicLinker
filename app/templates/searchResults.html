@@ -64,14 +64,13 @@
                             <tr>
                                 <td><input type="submit" value="お気に入り登録" class="btn btn-lg button" type="submit"
                                 style="font-size : 100%;background-color:#4898A8;color:white;">
-                                    <input type="hidden" name="favorite" value="{{ artists[i].attr["id"] }}" class="btn btn-lg button">
+                                    <input type="hidden" name="favorite" value="{{ artist.attr["id"] }}" class="btn btn-lg button">
                                 </td>
-                                <!--<td>{{ artist_name_list[i] }}</td>-->
-                                <td>{{ artists[i].attr["id"] }}</td>
 
-                                <td>{{ fan_class_list[i] }}</td>
-                                <td>{{ sex_list[i] }}</td>
-                                <td>{{ genre_list[i] }}</td>
+                                <td>{{ artists[i].attr["artist_name"] }}</td>
+                                <td>{{ artists[i].attr["fan_class"] }}</td>
+                                <td>{{ artists[i].attr["sex"] }}</td>
+                                <td>{{ artists[i].attr["id"] }}</td>
                             </tr>
                         <!--</select>-->
                     {% end %}
