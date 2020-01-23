@@ -238,35 +238,15 @@ class user:
             ])
 
     # favorite更新
-    def favorite_update(self):
+    @staticmethod
+    def favorite_update(_favorite_id, _id):
         with DBConnector(dbName='db_%s' % project.name()) as con, con.cursor() as cursor:
-            # データの保存(UPDATE)
-            # cursor.execute("""
-            #     UPDATE table_user
-            #     SET favorite = %s
-            #     WHERE id = %s; """,
-            #                (self.attr["favorite"],
-            #                 self.attr["id"]))
-
-            # データの保存(UPDATE)
+            データの保存(UPDATE)
             cursor.execute("""
                 UPDATE table_user
-                SET email = %s,
-                    genre = %s,
-                    sex = %s,
-                    fan_class = %s,
-                    artist_name = %s,
-                    favorite = %s,
-                    password = %s
+                SET favorite = %s
                 WHERE id = %s; """,
-                           (self.attr["email"],
-                            self.attr["genre"],
-                            self.attr["sex"],
-                            self.attr["fan_class"],
-                            self.attr["artist_name"],
-                            self.attr["favorite"],
-                            self.attr["password"],
-                            self.attr["id"]))
+                           (_favorite_id, _id))
 
             con.commit()
 
@@ -307,7 +287,7 @@ class user:
         with DBConnector(dbName='db_%s' % project.name()) as con, con.cursor() as cursor:
 
             cursor.execute("""
-                SELECT * FROM table_user 
+                SELECT * FROM table_user
                 WHERE artist_name != ''
             """)
             con.commit()
