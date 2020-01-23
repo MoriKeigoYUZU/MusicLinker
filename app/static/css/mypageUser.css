@@ -33,7 +33,7 @@
 }
 
 .container {
-    height: 90vh;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,4 +59,8 @@
     opacity: 0.7;
 }
 
-
+.top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

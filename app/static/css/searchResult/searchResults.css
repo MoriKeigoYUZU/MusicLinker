@@ -147,3 +147,10 @@ input {
 .btn {
   background: yellow;
 }
+
+
+.top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
