@@ -144,7 +144,7 @@ class SearchResultsHandler(LoginBaseHandler):
         # 概要を取得
         _favorite_id = self.get_argument("favorite", None)
 
-        result = _signedInUser.favorite_update()
+        result = _signedInUser.save()
 
         if result is None:
             self.redirect("/mypageUser")
