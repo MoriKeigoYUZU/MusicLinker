@@ -1,16 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>検索結果</title>
     <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
     <!--<script src="../static/js/searchResults.js"></script>-->
-    <link rel="stylesheet" href="../static/css/searchResult/searchResults.css" />
+    <link rel="stylesheet" href="../static/css/searchResult/searchResults.css"/>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
     <script>
       function favorite() {
         window.alert("お気に入り登録しました。");
@@ -39,6 +38,7 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
+                        <th></th>
                         <th>アーティスト名</th>
                         <th>ファン層の年齢</th>
                         <th>ファン層の性別</th>
@@ -54,21 +54,31 @@
                 <td>{{ artist.attr["genre"] }}</td>
             </tr>
             {% end %} -->
+
                     {% for i in range(0,len(artists)) %}
-                    <tr onclick="favorite()">
-                        <td>{{ artist_name_list[i] }}</td>
-                        <td>{{ fan_class_list[i] }}</td>
-                        <td>{{ sex_list[i] }}</td>
-                        <td>{{ genre_list[i] }}</td>
-                    </tr>
+                    <form action="/searchResults" method="post">
+                        <!--<form action="/searchResults" method="post" onclick="favorite()">-->
+                        <!--<select name="horoscope" size="12">-->
+                            <tr >
+                                <td><input type="submit" value="お気に入り登録" class="btn btn-lg button" type="submit"
+                                style="font-size : 100%;background-color:#4898A8;color:white;">
+                                    <input type="hidden" name="favorite" value=artists[i].attr["id"] class="btn btn-lg button">
+                                </td>
+                                <td>{{ artist_name_list[i] }}</td>
+                                <td>{{ fan_class_list[i] }}</td>
+                                <td>{{ sex_list[i] }}</td>
+                                <td>{{ genre_list[i] }}</td>
+                            </tr>
+                        <!--</select>-->
+                    </form>
                     {% end %}
+
                     </tbody>
                 </table>
             </div>
         </div>
     </form>
 </div>
-
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
