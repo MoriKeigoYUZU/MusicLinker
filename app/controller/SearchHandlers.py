@@ -127,7 +127,9 @@ class SearchResultsHandler(LoginBaseHandler):
             messages.append(_message)
         # 概要を取得
         _favorite_id = self.get_argument("favorite", None)
+
         result = _signedInUser.favorite_update(_favorite_id, _id)
+
 
         if result is None:
             self.redirect("/mypageUser")
