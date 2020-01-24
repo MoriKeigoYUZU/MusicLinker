@@ -49,34 +49,21 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <!-- {% for artist in artists %}
-            <tr>
-                <td>{{ artist.attr["artist_name"] }}</td>
-                <td>{{ artist.attr["fan_class"] }}</td>
-                <td>{{ artist.attr["sex"] }}</td>
-                <td>{{ artist.attr["genre"] }}</td>
-            </tr>
-            {% end %} -->
                     <form action="/searchResults" method="post">
-                    {% for i in range(0,len(artists)) %}
-                        <!--<form action="/searchResults" method="post" onclick="favorite()">-->
-                        <!--<select name="horoscope" size="12">-->
-                            <tr>
-                                <td><input type="submit" value="お気に入り登録" class="btn btn-lg button" type="submit"
-                                style="font-size : 100%;background-color:#4898A8;color:white;">
-                                    <input type="hidden" name="favorite" value="{{ artist.attr["id"] }}" class="btn btn-lg button">
-                                </td>
-
-                                <td>{{ artists[i].attr["artist_name"] }}</td>
-                                <td>{{ artists[i].attr["fan_class"] }}</td>
-                                <td>{{ artists[i].attr["sex"] }}</td>
-                                <td>{{ artists[i].attr["id"] }}</td>
-                            </tr>
-                        <!--</select>-->
-                    {% end %}
+                        {% for i in range(0,len(artists)) %}
+                        <tr>
+                            <td>
+                                <input type="submit" value="お気に入り登録" class="btn btn-lg button" type="submit"
+                                       style="font-size : 100%;background-color:#4898A8;color:white;">
+                                <input type="hidden" name="favorite" value="{{ artist.attr[" id"] }}" class="btn btn-lg button">
+                            </td>
+                            <td>{{ artists[i].attr["artist_name"] }}</td>
+                            <td>{{ artists[i].attr["fan_class"] }}</td>
+                            <td>{{ artists[i].attr["sex"] }}</td>
+                            <td>{{ artists[i].attr["id"] }}</td>
+                        </tr>
+                        {% end %}
                     </form>
-
-
                     </tbody>
                 </table>
             </div>
@@ -84,9 +71,8 @@
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -96,10 +82,4 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
 </body>
-<!--<footer class="footer">-->
-<!--<div class="footer-logo">-->
-<!--<li>MusicLinker</li>-->
-<!--</div>-->
-<!--</footer>-->
-
 </html>
